@@ -3,10 +3,12 @@
         public string $path;
         public string $http_method;
         public string $php_file;
-        function __construct(string $path, string $http_method, string $php_file){
+        public string $title;
+        function __construct(string $path, string $http_method, string $php_file, string $title){
             $this->path=$path;
             $this->http_method=$http_method;
             $this->php_file=$php_file;
+            $this->title=$title;
         }
     }
     class RouterList{
@@ -62,5 +64,15 @@
             return 'php/page/error_404.php';
         }
         return $current_router->php_file;
+    }
+    function get_title(RouterList $routers, string $path, string $method):string{
+        $current_router = $routers->get_router($path,$method);
+        if(!$routers->right_method($path,$method)){
+            return 'error 405';
+        }
+        if(!$routers->right_path($path,$method)){
+            return 'error 404';
+        }
+        return $current_router->title;
     }
 ?>

@@ -1,4 +1,3 @@
-<link href="assets/css/style.css" rel="stylesheet" type="text/css">
 <?php
     include_once('php/tool/router.php');
     //use assets\php\tool\router\Router;
@@ -10,10 +9,17 @@
     $http_method = $_SERVER["REQUEST_METHOD"];
 
     $routers = new RouterList([
-        new Router('/', 'GET',"php/page/home.php"),
-        new Router('/article', 'GET', "php/page/article.php"),  
-        new Router('/art', 'GET', "php/page/article.php")   
+        new Router('/', 'GET',"php/page/home.php",'Home'),
+        new Router('/article', 'GET', "php/page/article.php",'Article'),  
+        new Router('/art', 'GET', "php/page/article.php",'Article')   
     ]);
 
-    require_once(get_page($routers,$path,$http_method));
+    
 ?>  
+<head>
+    <title><?php echo get_title($routers,$path,$http_method);?></title>
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <?php require_once(get_page($routers,$path,$http_method)); ?>
+</body>
