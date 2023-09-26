@@ -56,10 +56,10 @@
     function get_page(RouterList $routers, string $path, string $method):string{
         $current_router = $routers->get_router($path,$method);
         if(!$routers->right_method($path,$method)){
-            return 'assets/php/page/error_405.php';
+            return 'src/assets/php/page/error_405.php';
         }
         if(!$routers->right_path($path,$method)){
-            return 'assets/php/page/error_404.php';
+            return 'src/assets/php/page/error_404.php';
         }
         return $current_router->php_file;
     }

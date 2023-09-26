@@ -1,6 +1,6 @@
 <link href="src/assets/css/style.css" rel="stylesheet" type="text/css">
 <?php
-    include_once('assets/php/tool/router.php');
+    include_once('src/assets/php/tool/router.php');
     //use assets\php\tool\router\Router;
     //use assets\php\tool\router\RouterList;
     //var_dump($_SERVER);
