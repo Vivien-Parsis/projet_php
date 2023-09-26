@@ -1,0 +1,15 @@
+{
+    "name": "vivie/projet_php",
+    "autoload": {
+        "psr-4": {
+            "Vivie\\ProjetPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "VIvien-Parsis",
+            "email": "vivienparsis.perso@gmail.com"
+        }
+    ],
+    "require": {}
+}
