@@ -1,1 +1,0 @@
-<h1>error 405 - unauthorized method</h1>
