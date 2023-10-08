@@ -4,7 +4,7 @@
     //use assets\php\tool\router\Router;
     //use assets\php\tool\router\RouterList;
     //var_dump($_SERVER);
-    include_once('http_info.php');
+    include_once('php\http_info.php');
 
     $routers = new RouterList([
         new Router('/', 'GET',"php/page/home.php",'Home'), 

@@ -20,7 +20,7 @@
       return connect_sql($query);
     }
     function remove_todo(string $id){
-      $query="DELETE FROM todo WHERE id_todo=$id";
+      $query="delete from todo where id_todo=$id";
       return connect_sql($query);
     }
     function remove_all_todo(int $id){
@@ -28,10 +28,8 @@
       return connect_sql($query);
     }
     function modify_todo(string $id, string $newvalue){
-      $query="";
+      $query="update todo set objectif_todo='$newvalue' where id_todo=$id";
       return connect_sql($query);
     }
   }
-
-
 ?>

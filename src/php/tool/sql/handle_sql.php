@@ -17,5 +17,6 @@
     }
     function check_query(string &$queryToCheck){
         $queryToCheck = str_replace("--","",$queryToCheck);
+        $queryToCheck = str_replace(";"," ",$queryToCheck);
     }
 ?>
