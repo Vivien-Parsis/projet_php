@@ -1,4 +1,7 @@
-<nav>
-    <a href="/">home</a>
-    <a href="/article">article</a>
-</nav>
+<?php
+    $navbar = 
+    '<nav>
+        <a href="/">home</a>
+        <a href="/todo">todo</a>
+    </nav>';
+?>

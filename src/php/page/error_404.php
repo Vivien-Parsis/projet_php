@@ -1,1 +1,3 @@
-<h1>error 404</h1>
+<?php
+    $html = "<h1>ERROR 404</h1>";
+?>

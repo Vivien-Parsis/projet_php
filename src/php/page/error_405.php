@@ -1,1 +1,3 @@
-<h1>error 405 - unauthorized method</h1>
+<?php
+    $html = "<h1>ERROR 405</h1>";
+?>

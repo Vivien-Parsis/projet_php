@@ -1,3 +1,6 @@
 vendor/*
 .vscode/*
 src/assets/php/tool/login.php
+note.drawio
+src/php/tool/login.php
+src/php/tool/sql/login.php

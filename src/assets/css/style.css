@@ -4,3 +4,10 @@ nav{
     flex-wrap:wrap;
     background-color: rgb(255, 205, 205);
 }
+footer{
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    align-content: center;
+    background-color: rgb(238, 238, 174);
+}
