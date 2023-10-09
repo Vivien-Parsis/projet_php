@@ -23,8 +23,8 @@
       $query="delete from todo where id_todo=$id";
       return connect_sql($query);
     }
-    function remove_all_todo(int $id){
-      $query="";
+    function remove_all_todo(){
+      $query="delete from todo";
       return connect_sql($query);
     }
     function modify_todo(string $id, string $newvalue){

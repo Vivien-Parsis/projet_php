@@ -13,6 +13,9 @@ function process_todo (){
         if ($_POST["function"] === "delete") {
             $sql_todo->remove_todo($_POST["id"]);
         }
+        if ($_POST["function"] === "delete_all") {
+            $sql_todo->remove_all_todo();
+        }
     }   
 }
     $html = "<span>redirection</span>";

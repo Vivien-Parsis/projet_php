@@ -1,3 +1,6 @@
+*{
+    font-family: 'Lexend', Arial, Helvetica, sans-serif;
+}
 html{
     height: 100%;
 }
@@ -11,6 +14,7 @@ nav{
     flex-wrap:wrap;
     justify-content: space-evenly;
     background-color: rgb(255, 205, 205);
+    padding:0.5em 0;
 }
 nav a{
     text-decoration: none;
@@ -31,4 +35,45 @@ footer{
     background-color: rgb(238, 238, 174);
     bottom:0px;
     position: sticky;
+    padding:0.5em 0;
+}
+.todo_form_add,.todo_form_modify{
+    margin:1%;
+    width: 98%;
+}
+.todo_content{
+    width: calc(98%-2px);
+    background-color: bisque;
+    padding:1%;
+    border: 1px black solid;
+}
+.todo_content textarea,.todo_form_add textarea{
+    resize: vertical;
+}
+.todo_content span{
+    width: 100%;
+    text-align: justify;
+    display: block;
+    margin: 0 0 .5%;
+}
+.todo_content button{
+    margin: 0 0 .5%;
+}
+.todo_form_modify{
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.todo_form_remove{
+    margin: .5% 0 0;
+}
+.todo_form_add{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.todo_form_remove_all{
+    margin:1% 1%;
 }

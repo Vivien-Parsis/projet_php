@@ -16,7 +16,9 @@
         }
     }
     function check_query(string &$queryToCheck){
+        //prevent from adding comment in the sql request
         $queryToCheck = str_replace("--","",$queryToCheck);
+        //prevent from adding mutliple instructions in the sql request 
         $queryToCheck = str_replace(";"," ",$queryToCheck);
     }
 ?>

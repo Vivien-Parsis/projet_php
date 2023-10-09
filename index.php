@@ -6,7 +6,7 @@
    include('.\src\main.php');
    include_once('./src/php/component/footer.php');
    include_once('./src/php/component/navbar.php');
-   if(!$isCSS){
+   if(!$isnotHTML){
       echo $twig->render('template.twig', ['title' => $title, 'page' => $html, 'nav' => $navbar, 'footer' => $footer]);
    }
    
