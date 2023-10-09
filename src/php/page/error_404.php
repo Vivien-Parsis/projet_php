@@ -1,3 +1,3 @@
 <?php
-    $html = "<h1>ERROR 404</h1>";
+    $html = "<h2 class='error_title'>ERROR 404<br>Ressource Not Found</h2>";
 ?>

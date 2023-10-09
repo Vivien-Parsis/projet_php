@@ -3,16 +3,16 @@
     include_once('php\tool\http_info.php');
 
     $routers = new RouterList([
-        new Router('/', 'GET',"php/page/home.php",'Home',false), 
-        new Router('/todo', 'GET', "php/page/todo.php",'ToDo',false),
-        new Router('/agenda', 'GET', "php/page/agenda.php",'Agenda',false),
-        new Router('/process_todo.php', 'POST', "php/tool/todo/process_todo.php",'ToDo',false),
-        new Router('/assets/css/style.css','GET',"php/page/process_not_html.php",'style',true),
-        new Router('/assets/js/modify.js','GET',"php/page/process_not_html.php",'modify',true),
-        new Router('/assets/img/icon.ico','GET',"php/page/process_not_html.php",'icon',true)
+        new Router('/', 'GET',"php/page/home.php",'Home'), 
+        new Router('/todo', 'GET', "php/page/todo.php",'ToDo'),
+        new Router('/agenda', 'GET', "php/page/agenda.php",'Agenda'),
+        new Router('/process_todo.php', 'POST', "php/tool/todo/process_todo.php",'ToDo')
     ]);
-    include_once(get_page($routers,$path,$http_method));
+    $currentpage = get_page($routers,$path,$http_method);
+    if($currentpage!="nothtml"){
+        include_once($currentpage);
+    }
     $currentRouter = $routers->get_router($path,$http_method);
-    $isnotHTML = $currentRouter!=null ? $currentRouter->getisnotHTML() : null;
+    $isnotHTML = $currentpage=="nothtml";
     $title = get_title($routers,$path,$http_method);
 ?>  

@@ -4,16 +4,11 @@
         public string $http_method;
         public string $php_file;
         public string $title;
-        private bool $isnotHTML;
-        function __construct(string $path, string $http_method, string $php_file, string $title, bool $isnotHTML){
+        function __construct(string $path, string $http_method, string $php_file, string $title){
             $this->path=$path;
             $this->http_method=$http_method;
             $this->php_file=$php_file;
             $this->title=$title;
-            $this->isnotHTML=$isnotHTML;
-        }
-        function getisnotHTML(){
-            return $this->isnotHTML;
         }
     }
     class RouterList{
@@ -70,6 +65,49 @@
     }
     function get_page(RouterList $routers, string $path, string $method):string{
         $current_router = $routers->get_router($path,$method);
+        //handle js file
+        if(str_ends_with($path,".js")&&str_starts_with($path,"/assets/js/")){
+            header("Content-Type: application/javascript");
+            $js = "./src".$path;
+            if(file_exists($js)){
+                echo file_get_contents($js);
+                return "nothtml";
+            }else{
+                echo "error loading js";
+            }
+        }
+        //handle css file
+        if(str_ends_with($path,".css")&&str_starts_with($path,"/assets/css/")){
+            header("Content-Type: text/css");
+            $css = "./src".$path;
+            if(file_exists($css)){
+                echo file_get_contents($css);
+                return "nothtml";
+            }else{
+                echo "error loading css";
+            }
+        }
+        //handle image file
+        if((str_ends_with($path,".ico")||str_ends_with($path,".png")||str_ends_with($path,".svg"))&&str_starts_with($path,"/assets/img/")){
+            $mime_type = "";
+            if(str_ends_with($path,".ico")){
+                $mime_type = "image/x-icon";
+            }
+            if(str_ends_with($path,".png")){
+                $mime_type = "image/png";
+            }
+            if(str_ends_with($path,".svg")){
+                $mime_type = "image/svg+xml";
+            }
+            header("Content-Type: $mime_type");
+            $img = "./src".$path;
+            if(file_exists($img)){
+                echo file_get_contents($img);
+                return "nothtml";
+            }else{
+                echo "error loading image";
+            }
+        }
         if(!$routers->right_method($path,$method)){
             return 'php/page/error_405.php';
         }

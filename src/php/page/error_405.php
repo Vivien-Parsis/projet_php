@@ -1,3 +1,3 @@
 <?php
-    $html = "<h1>ERROR 405</h1>";
+    $html = "<h2 class='error_title'>ERROR 405<br>Method Not Allowed</h2>";
 ?>
