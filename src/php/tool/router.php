@@ -4,11 +4,16 @@
         public string $http_method;
         public string $php_file;
         public string $title;
-        function __construct(string $path, string $http_method, string $php_file, string $title){
+        private bool $isCSSFile;
+        function __construct(string $path, string $http_method, string $php_file, string $title, bool $isCSSFile){
             $this->path=$path;
             $this->http_method=$http_method;
             $this->php_file=$php_file;
             $this->title=$title;
+            $this->isCSSFile=$isCSSFile;
+        }
+        function getisCSSFile(){
+            return $this->isCSSFile;
         }
     }
     class RouterList{
@@ -43,6 +48,14 @@
                 }
             }
             return $check;
+        }
+        function isCSSFile(string $path, string $method):bool{
+            foreach($this->list as $router){
+                if($router->isCSSFile==true){
+                    return true;
+                }
+            }
+            return false;
         }
         function right_path(string $path, string $method){
             $check = false;

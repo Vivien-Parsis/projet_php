@@ -14,5 +14,8 @@ function process_todo (){
             $sql_todo->remove_todo($_POST["id"]);
         }
     }   
-} 
+}
+    $html = "<span>redirection</span>";
+    process_todo();
 ?>
+<meta http-equiv="refresh" content="0;URL='/todo'"> 
