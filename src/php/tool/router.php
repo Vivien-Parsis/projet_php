@@ -67,24 +67,24 @@
         $current_router = $routers->get_router($path,$method);
         //handle js file
         if(str_ends_with($path,".js")&&str_starts_with($path,"/assets/js/")){
-            header("Content-Type: application/javascript");
             $js = "./src".$path;
             if(file_exists($js)){
+                header("Content-Type: application/javascript");
                 echo file_get_contents($js);
                 return "nothtml";
             }else{
-                echo "error loading js";
+                return 'php/page/error_404.php';
             }
         }
         //handle css file
         if(str_ends_with($path,".css")&&str_starts_with($path,"/assets/css/")){
-            header("Content-Type: text/css");
             $css = "./src".$path;
             if(file_exists($css)){
+                header("Content-Type: text/css");
                 echo file_get_contents($css);
                 return "nothtml";
             }else{
-                echo "error loading css";
+                return 'php/page/error_404.php';
             }
         }
         //handle image file
@@ -99,13 +99,13 @@
             if(str_ends_with($path,".svg")){
                 $mime_type = "image/svg+xml";
             }
-            header("Content-Type: $mime_type");
             $img = "./src".$path;
             if(file_exists($img)){
+                header("Content-Type: $mime_type");
                 echo file_get_contents($img);
                 return "nothtml";
             }else{
-                echo "error loading image";
+                return 'php/page/error_404.php';
             }
         }
         if(!$routers->right_method($path,$method)){
