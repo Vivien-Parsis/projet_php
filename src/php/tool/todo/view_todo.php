@@ -14,7 +14,7 @@
                 <form action='process_todo.php' method='POST' style='display:none' class='todo_form_modify' id='todo_form_modify".$value['id_todo']."'>
                     <input type='hidden' name='function' value='modify'>
                     <input type='hidden' name='id' value='".$value['id_todo']."'>
-                    <textarea name='newvalue' cols='100' rows='2'></textarea>
+                    <textarea name='newvalue' cols='100' rows='2' maxlength='1000'></textarea>
                     <input type='submit' value='envoyer' onclick='hideModify(".$value['id_todo'].")'>
                 </form>
                 <form action='process_todo.php' method='POST' class='todo_form_remove'>
@@ -27,7 +27,7 @@
         }   
         $html.="<form action='process_todo.php' method='POST' class='todo_form_add'>
             <input type='hidden' name='function' value='add'>
-            <textarea name='objectif' cols='100' rows='2'></textarea>
+            <textarea name='objectif' cols='100' rows='2' maxlength='1000'></textarea>
             <input type='submit' value='ajouter'>
         </form>
         <form action='process_todo.php' method='POST' class='todo_form_remove_all'>
@@ -38,4 +38,4 @@
     }
 ?>
 
-<script src='js/modify.js'></script>
+<script src='assets/js/modify.js'></script>

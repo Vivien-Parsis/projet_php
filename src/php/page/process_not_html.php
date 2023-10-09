@@ -1,6 +1,6 @@
 <?php
     $path = explode("?",$_SERVER["REQUEST_URI"])[0];
-    if($path=='/js/modify.js'){
+    if($path=='/assets/js/modify.js'){
         header("Content-Type: application/javascript");
         $js = "./src/assets/js/modify.js";
         if(file_exists($js)){
@@ -9,7 +9,7 @@
             echo "error loading js";
         }
     }
-    if($path=='/css/style.css'){
+    if($path=='/assets/css/style.css'){
         header("Content-Type: text/css");
         $css = "./src/assets/css/style.css";
         if(file_exists($css)){
