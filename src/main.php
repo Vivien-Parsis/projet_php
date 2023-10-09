@@ -1,9 +1,6 @@
 <?php
     include_once('php\tool\router.php');
-    //use assets\php\tool\router\Router;
-    //use assets\php\tool\router\RouterList;
-    //var_dump($_SERVER);
-    include_once('php\http_info.php');
+    include_once('php\tool\http_info.php');
 
     $routers = new RouterList([
         new Router('/', 'GET',"php/page/home.php",'Home',false), 
@@ -11,7 +8,8 @@
         new Router('/agenda', 'GET', "php/page/agenda.php",'Agenda',false),
         new Router('/process_todo.php', 'POST', "php/tool/todo/process_todo.php",'ToDo',false),
         new Router('/assets/css/style.css','GET',"php/page/process_not_html.php",'style',true),
-        new Router('/assets/js/modify.js','GET',"php/page/process_not_html.php",'modify',true)
+        new Router('/assets/js/modify.js','GET',"php/page/process_not_html.php",'modify',true),
+        new Router('/assets/img/icon.ico','GET',"php/page/process_not_html.php",'icon',true)
     ]);
     include_once(get_page($routers,$path,$http_method));
     $currentRouter = $routers->get_router($path,$http_method);
