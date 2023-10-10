@@ -51,4 +51,4 @@
     }
 ?>
 
-<script src='assets/js/modify.js'></script>
+<script src='assets/js/TodoModify.js'></script>

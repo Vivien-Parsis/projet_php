@@ -25,7 +25,7 @@ CREATE TABLE agenda (
 );
 
 
-INSERT INTO agenda (evenement_agenda,date_agenda,heure_fin_agenda) VALUES
-("cours français", "2023-04-23 12:00:00","13:00:00"),("cours philo", "2023-04-23 08:00:00","09:00:00"),
-("cours math", "2023-11-02 16:00:00","18:00:00"),("cours info", "2023-10-25 11:00:00","17:00:00"),
-("anniversaire de untel", "2023-12-23 12:00:00","13:00:00");
+INSERT INTO agenda (id_agenda,evenement_agenda,date_debut_agenda,date_fin_agenda) values 
+(0,"cours français", "2023-04-23 12:00:00","2023-04-23 13:00:00"),(1,"cours philo", "2023-04-23 08:00:00","2023-04-23 09:00:00"),
+(2,"cours math", "2023-11-02 16:00:00","2023-11-02 18:00:00"),(3,"cours info", "2023-10-25 11:00:00","2023-10-25 17:00:00"),
+(4,"anniversaire de untel", "2023-12-23 12:00:00","2023-12-23 13:00:00");

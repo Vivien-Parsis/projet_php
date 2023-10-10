@@ -10,15 +10,14 @@
       $this->http_body=$http_body;
     }
     function add_agenda(string $startDate, string $endDate, string $event){
-      //traiter les heures, début > fin ou pas
-      $query="";
+      $query="INSERT INTO agenda (evenement_agenda,date_debut_agenda,date_fin_agenda) values ('$event','$startDate','$endDate')";
       return connect_sql($query);
     }
     function default_agenda(){
-      $query='insert into agenda (evenement_agenda,date_debut_agenda,date_fin_agenda) values 
-      ("cours français", "2023-04-23 12:00:00","2023-04-23 13:00:00"),("cours philo", "2023-04-23 08:00:00","2023-04-23 09:00:00"),
-      ("cours math", "2023-11-02 16:00:00","2023-11-02 18:00:00"),("cours info", "2023-10-25 11:00:00","2023-10-25 17:00:00"),
-      ("anniversaire de untel", "2023-12-23 12:00:00","2023-12-23 13:00:00")';
+      $query='INSERT INTO agenda (id_agenda,evenement_agenda,date_debut_agenda,date_fin_agenda) values 
+      (0,"cours français", "2023-04-23 12:00:00","2023-04-23 13:00:00"),(1,"cours philo", "2023-04-23 08:00:00","2023-04-23 09:00:00"),
+      (2,"cours math", "2023-11-02 16:00:00","2023-11-02 18:00:00"),(3,"cours info", "2023-10-25 11:00:00","2023-10-25 17:00:00"),
+      (4,"anniversaire de untel", "2023-12-23 12:00:00","2023-12-23 13:00:00")';
       $this->remove_all_agenda();
       return connect_sql($query);
     }
@@ -37,11 +36,11 @@
       $query="delete from agenda";
       return connect_sql($query);
     }
-    function modify_agenda(string $id, string $newvalue){
+    function modify_agenda(string $id, string $startDate, string $endDate, string $event){
       if(!check_id($id)){
         return;
       }
-      $query="";
+      $query="update agenda set evenement_agenda='$event', date_debut_agenda='$startDate', date_fin_agenda='$endDate' where id_agenda=$id";
       return connect_sql($query);
     }
   }

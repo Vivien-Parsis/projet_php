@@ -23,7 +23,7 @@
       return connect_sql($query);
     }
     function read_all_todo():array{
-      $query="select * from todo";
+      $query="select * from todo order by done_todo";
       return connect_sql($query);
     }
     function remove_todo(string $id){

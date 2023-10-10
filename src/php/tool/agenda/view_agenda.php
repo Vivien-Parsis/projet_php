@@ -42,6 +42,15 @@
                     <input type='hidden' name='id' value='$value[id_agenda]'>
                     <input type='submit' value='supprimer'>
                 </form>
+                <button onclick='toggleModify($value[id_agenda])'>modifier</button>
+                <form action='process_agenda.php' method='POST' style='display:none' class='agenda_form_modify' id='agenda_form_modify$value[id_agenda]'>
+                    <input type='hidden' name='function' value='modify'>
+                    <input type='hidden' name='id' value='$value[id_agenda]'>
+                    <input type='datetime-local' name='newstart' value='$DateDebutString".'T'."$HourDebutString'>
+                    <input type='datetime-local' name='newend' value='$DateFinString".'T'."$HourFinString'>
+                    <input type='text' name='newevenement' placeholder='evenement' autocomplete='off' max-length='150' value='$value[evenement_agenda]'>
+                    <input type='submit' value='modifier'>
+                </form>
                 </div>";
             } 
         }   
@@ -50,7 +59,7 @@
             <input type='hidden' name='function' value='add'>
             <input type='datetime-local' name='startdate'>
             <input type='datetime-local' name='enddate'>
-            <input type='text' name='evenement' placeholder='evenement' max-length='150'>
+            <input type='text' name='evenement' placeholder='evenement' autocomplete='off' max-length='150'>
             <input type='submit' value='ajouter'>
         </form>
         <form action='process_agenda.php' method='POST' class='agenda_form_default'>
@@ -64,5 +73,4 @@
         return $html;
     }
 ?>
-
-<script src='assets/js/modify.js'></script>
+<script src='assets/js/AgendaModify.js'></script>
