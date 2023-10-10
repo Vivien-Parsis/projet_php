@@ -24,7 +24,7 @@ function process_todo (){
         }
     }   
 }
-    $html = "<span>redirection</span>";
+    $html = "<div class='loading'><img src='/assets/img/loading-svgrepo-com.svg'></div>";
     process_todo();
 ?>
 <meta http-equiv="refresh" content="0;URL='/todo'"> 

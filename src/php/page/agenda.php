@@ -1,3 +1,4 @@
 <?php 
-    $html="<h2>agenda</h2>";
+    require_once('.\src\php\tool\agenda\view_agenda.php');
+    $html = html_agenda();
 ?>

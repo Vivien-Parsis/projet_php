@@ -49,16 +49,32 @@ footer{
 .error_title{
     text-align: center;
     color: rgb(76, 24, 24);
+    font-size: 2em;
 }
-.todo_form_add,.todo_form_modify,.todo_form_default{
+.error_title img{
+    height: 1.5em;
+}
+.loading{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.loading img{
+    width: 1.5em;
+}
+.todo_form_add,.todo_form_modify,.todo_form_default,.agenda_form_default,.agenda_form_add{
     margin:1%;
     width: 98%;
 }
 .todo_content{
     width: calc(98%-2px);
-    background-color: bisque;
+    background-color: rgb(238, 229, 218);
     padding:1%;
     border: 1px black solid;
+    font-weight: bold;
 }
 .todo_content textarea,.todo_form_add textarea{
     resize: vertical;
@@ -77,7 +93,7 @@ footer{
     align-items: center;
     flex-wrap: wrap;
 }
-.todo_form_remove{
+.todo_form_remove,.agenda_form_remove{
     margin: .5% 0 0;
 }
 .todo_form_add{
@@ -87,10 +103,21 @@ footer{
     align-items: center;
     justify-content: center;
 }
-.todo_form_remove_all{
+.todo_form_remove_all,.agenda_form_remove_all{
     margin:1% 1%;
 }
 .todo_form_done{
     margin:0;
     width: fit-content;
+}
+.checked{
+    color:rgb(158, 158, 158);
+    font-weight: 100;
+    font-style: italic;
+}
+.agenda_content{
+    width: calc(100% - 2% - 2px);
+    background-color: rgb(193, 245, 245);
+    padding:1%;
+    border: 1px solid black;
 }

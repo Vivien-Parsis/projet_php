@@ -13,5 +13,13 @@
     ],
     "require": {
         "twig/twig": "^3.7"
+    },
+    "scripts": {
+        "launch" : [
+            "php -S localhost:7777 index.php"
+        ]
+    },
+    "config": {
+        "process-timeout":0
     }
 }

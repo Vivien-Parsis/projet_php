@@ -10,7 +10,7 @@
             foreach($data_todo as $value){
                 $checked = $value['done_todo']==0?"":"checked";
                 $html.="<div class='todo_content'>
-                <span>
+                <span class='$checked'>
                     <form action='process_todo.php' method='POST' class='todo_form_done' id='check$value[id_todo]'>
                         <input type='hidden' name='function' value='check'>
                         <input type='hidden' name='id' value='$value[id_todo]'>
