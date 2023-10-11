@@ -12,7 +12,7 @@ function process_agenda (){
             }
             $StartDateTransform = explode("T",$_POST["startdate"])[0]." ".explode("T",$_POST["startdate"])[1].":00";
             $EndDateTransform = explode("T",$_POST["enddate"])[0]." ".explode("T",$_POST["enddate"])[1].":00";
-            $sql_agenda->add_agenda($StartDateTransform,$EndDateTransform,$_POST["evenement"]);
+            $sql_agenda->add_agenda($StartDateTransform,$EndDateTransform,$_POST["evenement"],$_SESSION['utilisateur']['id']);
         }
         if ($_POST["function"] === "default") {
             $sql_agenda->default_agenda();

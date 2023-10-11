@@ -9,8 +9,11 @@
       $this->url_query=$url_query;
       $this->http_body=$http_body;
     }
-    function add_agenda(string $startDate, string $endDate, string $event){
-      $query="INSERT INTO agenda (evenement_agenda,date_debut_agenda,date_fin_agenda) values ('$event','$startDate','$endDate')";
+    function add_agenda(string $startDate, string $endDate, string $event, string $id_user){
+      if(!check_id($id_user)){
+        return;
+      }
+      $query="INSERT INTO agenda (evenement_agenda,date_debut_agenda,date_fin_agenda,id_utilisateurs) values ('$event','$startDate','$endDate','$id_user')";
       return connect_sql($query);
     }
     function default_agenda(){

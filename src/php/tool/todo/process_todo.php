@@ -8,7 +8,7 @@ function process_todo (){
             $sql_todo->modify_todo($_POST["id"],$_POST["newvalue"]);
         }
         if ($_POST["function"] === "add") {
-            $sql_todo->add_todo($_POST["objectif"]);
+            $sql_todo->add_todo($_POST["objectif"],$_SESSION['utilisateur']['id']);
         }
         if ($_POST["function"] === "delete") {
             $sql_todo->remove_todo($_POST["id"]);

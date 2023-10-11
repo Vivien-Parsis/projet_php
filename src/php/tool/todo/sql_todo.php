@@ -10,8 +10,11 @@
       $this->http_body=$http_body;
     }
 
-    function add_todo(string $objective){
-      $query="insert into todo(objectif_todo,done) value ('$objective',0)";
+    function add_todo(string $objective, $id_user){
+      if(!check_id($id_user)){
+        return;
+      }
+      $query="insert into todo(objectif_todo,done_todo,id_utilisateurs) value ('$objective',0,'$id_user')";
       return connect_sql($query);
     }
     function default_todo(){
