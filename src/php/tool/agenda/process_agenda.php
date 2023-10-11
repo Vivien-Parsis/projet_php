@@ -30,8 +30,8 @@ function process_agenda (){
         if ($_POST["function"] === "delete") {
             $sql_agenda->remove_agenda($_POST["id"]);
         }
-        if ($_POST["function"] === "delete_all") {
-            $sql_agenda->remove_all_agenda();
+        if ($_POST["function"] === "delete_all_user") {
+            $sql_agenda->remove_all_user_agenda($_SESSION['utilisateur']['id']);
         }
     }   
 }

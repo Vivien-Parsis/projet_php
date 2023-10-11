@@ -13,8 +13,8 @@ function process_todo (){
         if ($_POST["function"] === "delete") {
             $sql_todo->remove_todo($_POST["id"]);
         }
-        if ($_POST["function"] === "delete_all") {
-            $sql_todo->remove_all_todo();
+        if ($_POST["function"] === "delete_all_user") {
+            $sql_todo->remove_all_user_todo($_SESSION['utilisateur']['id']);
         }
         if ($_POST["function"] === "check") {
             $sql_todo->update_done_todo($_POST["id"],$_POST["done"]);

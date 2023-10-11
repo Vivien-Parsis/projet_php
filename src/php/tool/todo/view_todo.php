@@ -4,7 +4,7 @@
         include('.\src\php\tool\http_info.php');
         $sql_todo = new Sql_todo($url_query, $body);
         $html = "";
-        $data_todo = $sql_todo->read_all_todo();
+        $data_todo = $sql_todo->read_todo($_SESSION['utilisateur']['id']);
         if(gettype($data_todo)=="array")
         {
             foreach($data_todo as $value){
@@ -40,7 +40,7 @@
             <input type='submit' value='ajouter'>
         </form>
         <form action='process_todo.php' method='POST' class='todo_form_remove_all'>
-            <input type='hidden' name='function' value='delete_all'>
+            <input type='hidden' name='function' value='delete_all_user'>
             <input type='submit' value='tout supprimer'>
         </form>
         <form action='process_todo.php' method='POST' class='todo_form_default'>

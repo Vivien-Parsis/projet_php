@@ -20,5 +20,6 @@
         $queryToCheck = str_replace("--","",$queryToCheck);
         //prevent from adding mutliple instructions in the sql request 
         $queryToCheck = str_replace(";"," ",$queryToCheck);
+        $queryToCheck = strip_tags($queryToCheck);
     }
 ?>

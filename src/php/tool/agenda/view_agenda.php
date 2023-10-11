@@ -4,7 +4,7 @@
         include('.\src\php\tool\http_info.php');
         $sql_agenda = new Sql_agenda($url_query, $body);
         $html = "";
-        $data_agenda = $sql_agenda->read_all_agenda();
+        $data_agenda = $sql_agenda->read_all_user_agenda($_SESSION['utilisateur']['id']);
         if(gettype($data_agenda)=="array")
         {
             foreach($data_agenda as $value){
@@ -67,7 +67,7 @@
             <input type='submit' value='reset'>
         </form>
         <form action='process_agenda.php' method='POST' class='agenda_form_remove_all'>
-            <input type='hidden' name='function' value='delete_all'>
+            <input type='hidden' name='function' value='delete_all_user'>
             <input type='submit' value='tout supprimer'>
         </form>";
         return $html;
