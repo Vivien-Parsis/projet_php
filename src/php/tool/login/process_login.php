@@ -18,9 +18,9 @@
                 }
             }
             if($_POST['function']=='end'){
-                session_destroy();
-                session_start();
-                return;
+                $_SESSION=NULL;
+                return "<div class='loading'><img src='/assets/img/loading-svgrepo-com.svg'></div>
+                <meta http-equiv='refresh' content=\"0;URL='/'\">";
             }
             if($_POST['function']=='add'){
                 $result = $sql_login->add_login($_POST['email'],$_POST['password'],$_POST['nom'],$_POST['prenom']);
