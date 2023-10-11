@@ -4,7 +4,6 @@
     if(isset($_SESSION['utilisateur'])){
         $html = html_agenda().html_end_login();
     }else{
-        $html = "<div class='loading'><img src='/assets/img/loading-svgrepo-com.svg'></div>
-        <meta http-equiv='refresh' content=\"0;URL='/'\">";
+        require_once('error_401.php');
     } 
 ?>

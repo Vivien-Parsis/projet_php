@@ -2,7 +2,7 @@
     function html_todo():string{
         require_once('.\src\php\tool\todo\sql_todo.php');
         include('.\src\php\tool\http_info.php');
-        $sql_todo = new Sql_todo($url_query, $body);
+        $sql_todo = new Sql_todo();
         $html = "";
         $data_todo = $sql_todo->read_todo($_SESSION['utilisateur']['id']);
         if(gettype($data_todo)=="array")

@@ -2,7 +2,7 @@
     function html_agenda():string{
         require_once('.\src\php\tool\agenda\sql_agenda.php');
         include('.\src\php\tool\http_info.php');
-        $sql_agenda = new Sql_agenda($url_query, $body);
+        $sql_agenda = new Sql_agenda();
         $html = "";
         $data_agenda = $sql_agenda->read_all_user_agenda($_SESSION['utilisateur']['id']);
         if(gettype($data_agenda)=="array")
@@ -57,9 +57,9 @@
         $html.="
         <form action='process_agenda.php' method='POST' class='agenda_form_add'>
             <input type='hidden' name='function' value='add'>
-            <input type='datetime-local' name='startdate'>
-            <input type='datetime-local' name='enddate'>
-            <input type='text' name='evenement' placeholder='evenement' autocomplete='off' max-length='150'>
+            <input type='datetime-local' name='startdate' required>
+            <input type='datetime-local' name='enddate' required>
+            <input type='text' name='evenement' placeholder='evenement' autocomplete='off' max-length='150' required>
             <input type='submit' value='ajouter'>
         </form>
         <form action='process_agenda.php' method='POST' class='agenda_form_default'>
