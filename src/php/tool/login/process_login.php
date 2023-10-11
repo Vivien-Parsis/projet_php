@@ -20,8 +20,7 @@
                 }
             }
             if($_POST['function']=='end'){
-                session_destroy();
-                session_start();
+                $_SESSION=NULL;
                 return "<div class='loading'><img src='/assets/img/loading-svgrepo-com.svg'></div>
                 <meta http-equiv='refresh' content=\"0;URL='/'\">";
             }
