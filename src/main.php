@@ -17,5 +17,5 @@
     }
     $currentRouter = $routers->get_router($path,$http_method);
     $isnotHTML = $currentpage=="nothtml";
-    $title = isset($_SESSION['utilisateur']) ? get_title($routers,$path,$http_method) : "";
+    $title = get_title($routers,$path,$http_method);
 ?>  
