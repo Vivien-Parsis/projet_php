@@ -1,7 +1,7 @@
 <?php
     function html_todo():string{
         require_once('.\src\php\tool\todo\sql_todo.php');
-        include('.\src\php\tool\http_info.php');
+        require_once('.\src\php\tool\http_info.php');
         $sql_todo = new Sql_todo();
         $html = "";
         $data_todo = $sql_todo->read_todo($_SESSION['utilisateur']['id']);
@@ -23,7 +23,7 @@
                 <form action='process_todo.php' method='POST' style='display:none' class='todo_form_modify' id='todo_form_modify$value[id_todo]'>
                     <input type='hidden' name='function' value='modify'>
                     <input type='hidden' name='id' value='$value[id_todo]'>
-                    <textarea name='newvalue' cols='100' rows='2' maxlength='1000'></textarea>
+                    <textarea name='newvalue' cols='100' rows='2' maxlength='1000' required></textarea>
                     <input type='submit' value='envoyer' onclick='hideModify($value[id_todo])'>
                 </form>
                 <form action='process_todo.php' method='POST' class='todo_form_remove'>
@@ -36,7 +36,7 @@
         }   
         $html.="<form action='process_todo.php' method='POST' class='todo_form_add'>
             <input type='hidden' name='function' value='add'>
-            <textarea name='objectif' cols='100' rows='2' maxlength='1000'></textarea>
+            <textarea name='objectif' cols='100' rows='2' maxlength='1000' required></textarea>
             <input type='submit' value='ajouter'>
         </form>
         <form action='process_todo.php' method='POST' class='todo_form_remove_all'>

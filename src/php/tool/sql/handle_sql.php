@@ -1,7 +1,7 @@
 <?php
     function connect_sql(string $query):array|string{
         try {
-            include('.\src\php\tool\sql\login.php');
+            require_once('.\src\php\tool\sql\login.php');
             $conn = new PDO("mysql:host=".$servername.";port=".$port.";dbname=".$dbname, $username, $password);
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -19,7 +19,8 @@
         //prevent from adding comment in the sql request
         $queryToCheck = str_replace("--","",$queryToCheck);
         //prevent from adding mutliple instructions in the sql request 
-        $queryToCheck = str_replace(";"," ",$queryToCheck);
+        $queryToCheck = str_replace("';"," ",$queryToCheck);
+        $queryToCheck = str_replace("\";"," ",$queryToCheck);
         $queryToCheck = strip_tags($queryToCheck);
     }
 ?>

@@ -16,7 +16,7 @@
     },
     "scripts": {
         "launch" : [
-            "php load_sql.php && php -S localhost:7777 index.php"
+            "php src/php/tool/sql/load_sql.php && php -S localhost:7777 index.php"
         ]
     },
     "config": {

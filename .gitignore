@@ -1,5 +1,4 @@
 vendor/*
 .vscode/*
-note.drawio
 note.txt
 src/php/tool/sql/login.php

@@ -1,6 +1,6 @@
 <?php
-    include_once('php\tool\router.php');
-    include_once('php\tool\http_info.php');
+    require_once('php\tool\router.php');
+    require_once('php\tool\http_info.php');
     session_start();
     $routers = new RouterList([
         new Router('/', 'GET',"php/page/home.php",'Home'), 
@@ -13,7 +13,7 @@
     ]);
     $currentpage = get_page($routers,$path,$http_method);
     if($currentpage!="nothtml"){
-        include_once($currentpage);
+        require_once($currentpage);
     }
     $currentRouter = $routers->get_router($path,$http_method);
     $isnotHTML = $currentpage=="nothtml";

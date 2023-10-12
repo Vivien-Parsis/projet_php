@@ -4,6 +4,13 @@
   class Sql_todo{
     function add_todo(string $objective, string $id_user){
       if(!check_id($id_user) || !check_exist($objective)){
+        require_once('.\src\php\component\alert.php');
+        echo alertJS("error");
+        return;
+      }
+      if(!check_illegal_sequence($objective)){
+        require_once('.\src\php\component\alert.php');
+        echo alertJS("error illegal sequence");
         return;
       }
       $query="insert into todo(objectif_todo,done_todo,id_utilisateurs) value ('$objective',0,'$id_user')";
@@ -11,6 +18,8 @@
     }
     function default_user_todo(string $id_user){
       if(!check_id($id_user)){
+        require_once('.\src\php\component\alert.php');
+        echo alertJS("error");
         return;
       }
       $query="INSERT INTO todo (done_todo,id_utilisateurs,objectif_todo) VALUES
@@ -26,6 +35,8 @@
     }
     function read_todo(string $id_user):array{
       if(!check_id($id_user)){
+        require_once('.\src\php\component\alert.php');
+        echo alertJS("error");
         return [];
       }
       $query="select * from todo where id_utilisateurs=$id_user order by done_todo";
@@ -33,6 +44,8 @@
     }
     function remove_todo(string $id){
       if(!check_id($id)){
+        require_once('.\src\php\component\alert.php');
+        echo alertJS("error");
         return;
       }
       $query="delete from todo where id_todo=$id";
@@ -50,7 +63,14 @@
       return connect_sql($query);
     }
     function update_done_todo(string $id, string $done){
-      if(!check_exist($done)){
+      if(!check_exist($done) || !check_id($id)){
+        require_once('.\src\php\component\alert.php');
+        echo alertJS("error");
+        return;
+      }
+      if(!check_illegal_sequence($done)){
+        require_once('.\src\php\component\alert.php');
+        echo alertJS("error illegal sequence");
         return;
       }
       if($done=="1"){
@@ -62,7 +82,14 @@
       return connect_sql($query);
     }
     function modify_todo(string $id, string $newvalue){
-      if(!check_id($id)){
+      if(!check_id($id) || !check_exist($newvalue)){
+        require_once('.\src\php\component\alert.php');
+        echo alertJS("error");
+        return;
+      }
+      if(!check_illegal_sequence($newvalue)){
+        require_once('.\src\php\component\alert.php');
+        echo alertJS("error illegal sequence");
         return;
       }
       $query="update todo set objectif_todo='$newvalue' where id_todo=$id";
