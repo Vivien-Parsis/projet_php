@@ -2,7 +2,7 @@
 function process_todo (){
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once('sql_todo.php');
-        require_once('.\src\php\tool\http_info.php');
+        require_once('src\php\tool\http_info.php');
         $sql_todo = new Sql_todo();
         if ($_POST["function"] === "modify") {
             $sql_todo->modify_todo($_POST["id"],$_POST["newvalue"]);
@@ -24,7 +24,7 @@ function process_todo (){
         }
     }   
 }
-    require_once('.\src\php\component\redirect.php');
+    require_once('src\php\component\redirect.php');
     $html = redirect('/todo',0);
     process_todo();
 ?>

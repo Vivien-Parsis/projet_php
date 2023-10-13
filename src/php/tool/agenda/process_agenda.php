@@ -2,7 +2,7 @@
 function process_agenda (){
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once('sql_agenda.php');
-        require_once('.\src\php\tool\http_info.php');
+        require_once('src\php\tool\http_info.php');
         $sql_agenda = new Sql_agenda();
         if ($_POST["function"] === "add") {
             $sql_agenda->add_agenda($_POST["startdate"],$_POST["enddate"],$_POST["evenement"],$_SESSION['utilisateur']['id']);
@@ -21,7 +21,7 @@ function process_agenda (){
         }
     }   
 }
-    require_once('.\src\php\component\redirect.php');
+    require_once('src\php\component\redirect.php');
     $html = redirect('/agenda',0);
     process_agenda();
 ?>

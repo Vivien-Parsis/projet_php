@@ -1,7 +1,7 @@
 <?php
     function connect_sql(string $query):array|string{
         try {
-            require_once('.\src\php\tool\sql\login.php');
+            require_once('src\php\tool\sql\login.php');
             $conn = new PDO("mysql:host=".$servername.";port=".$port.";dbname=".$dbname, $username, $password);
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

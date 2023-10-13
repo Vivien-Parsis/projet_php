@@ -2,12 +2,12 @@
     function process_login (){
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             require_once('sql_login.php');
-            require_once('.\src\php\tool\http_info.php');
+            require_once('src\php\tool\http_info.php');
             $sql_login = new Sql_login();
             if($_POST['function']=='login'){
                 $result = $sql_login->read_login($_POST['email'],$_POST['password']);
                 if($result=="error sql" || count($result)==0){
-                    require_once('.\src\php\component\alert.php');
+                    require_once('src\php\component\alert.php');
                     echo alertJS("email et/ou mot de passe incorecte");
                     return;
                 }else{
@@ -34,6 +34,6 @@
         }   
     }
     process_login();
-    require_once('.\src\php\component\redirect.php');
+    require_once('src\php\component\redirect.php');
     $html = redirect('/',0);
 ?>

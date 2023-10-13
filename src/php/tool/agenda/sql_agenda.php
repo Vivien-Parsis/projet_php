@@ -4,12 +4,12 @@
   class Sql_agenda{
     function add_agenda(string $startDate, string $endDate, string $event, string $id_user){
       if(!check_id($id_user) || !check_exist($startDate) || !check_exist($endDate) || !check_exist($event)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error");
         return;
       }
       if(!check_illegal_sequence($startDate) || !check_illegal_sequence($endDate) || !check_illegal_sequence($event)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error illegal sequence");
         return;
       }
@@ -18,20 +18,20 @@
       $currentStartdate = explode("-",explode("T",$startDate)[0]);
       $currentEnddate = explode("-",explode("T",$endDate)[0]);
       if((count(explode("T",$startDate))!=2||count(explode("T",$endDate))!=2)||count($currentStarthour)!=2||count($currentEndhour)!=2||count($currentStartdate)!=3||count($currentEnddate)!=3){
-          require_once('.\src\php\component\alert.php');
+          require_once('src\php\component\alert.php');
           echo alertJS("format de date incorect");
           return;
       }
       if(intval($currentStartdate[0],10)>intval($currentEnddate[0],10)
       ||(intval($currentStartdate[0],10)==intval($currentEnddate[0],10)&&intval($currentStartdate[1],10)>intval($currentEnddate[1],10))
       ||(intval($currentStartdate[0],10)==intval($currentEnddate[0],10)&&intval($currentStartdate[1],10)==intval($currentEnddate[1],10)&&intval($currentStartdate[2],10)>intval($currentEnddate[2],10))){
-          require_once('.\src\php\component\alert.php');
+          require_once('src\php\component\alert.php');
           echo alertJS("erreur, date de fin anterieur a la date de début");
           return;
       }
       if(intval($currentStarthour[0],10)>intval($currentEndhour[0],10)
       ||(intval($currentStarthour[0],10)==intval($currentEndhour[0],10)&&intval($currentStarthour[1],10)>intval($currentEndhour[1],10))){
-          require_once('.\src\php\component\alert.php');
+          require_once('src\php\component\alert.php');
           echo alertJS("erreur, heure de fin anterieur a la heure de début");
           return;
       }
@@ -54,7 +54,7 @@
     }
     function read_all_user_agenda(string $id_user):array{
       if(!check_id($id_user)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error id");
         return [];
       }
@@ -63,7 +63,7 @@
     }
     function remove_agenda(string $id){
       if(!check_id($id)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error id");
         return;
       }
@@ -76,7 +76,7 @@
     }
     function remove_all_user_agenda(string $id_user){
       if(!check_id($id_user)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error id");
         return;
       }
@@ -85,24 +85,24 @@
     }
     function modify_agenda(string $id, string $startDate, string $endDate, string $event){
       if(!check_id($id) || !check_exist($startDate) || !check_exist($endDate) || !check_exist($event)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error");
         return;
       }
       if(!check_illegal_sequence($startDate) || !check_illegal_sequence($endDate) || !check_illegal_sequence($event)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error illegal sequence");
         return;
       }
       $currentStarthour = explode(":",explode("T",$_POST["newstart"])[1]);
       $currentEndhour = explode(":",explode("T",$_POST["newend"])[1]);
       if((count(explode("T",$startDate))!=2 || count(explode("T",$endDate))!=2)){
-          require_once('.\src\php\component\alert.php');
+          require_once('src\php\component\alert.php');
           echo alertJS("format de date incorect");
           return;
       }
       if(intval($currentStarthour[0],10)>intval($currentEndhour[0],10)||intval($currentStarthour[0],10)==intval($currentEndhour[0],10)&&intval($currentStarthour[1],10)>intval($currentEndhour[1],10)){
-          require_once('.\src\php\component\alert.php');
+          require_once('src\php\component\alert.php');
           echo alertJS("erreur, date de fin anterieur a la date de début");
           return;
       }

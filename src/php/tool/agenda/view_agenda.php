@@ -1,7 +1,7 @@
 <?php
     function html_agenda():string{
-        require_once('.\src\php\tool\agenda\sql_agenda.php');
-        require_once('.\src\php\tool\http_info.php');
+        require_once('src\php\tool\agenda\sql_agenda.php');
+        require_once('src\php\tool\http_info.php');
         $sql_agenda = new Sql_agenda();
         $html = "";
         $data_agenda = $sql_agenda->read_all_user_agenda($_SESSION['utilisateur']['id']);

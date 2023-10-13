@@ -4,12 +4,12 @@
   class Sql_todo{
     function add_todo(string $objective, string $id_user){
       if(!check_id($id_user) || !check_exist($objective)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error");
         return;
       }
       if(!check_illegal_sequence($objective)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error illegal sequence");
         return;
       }
@@ -18,7 +18,7 @@
     }
     function default_user_todo(string $id_user){
       if(!check_id($id_user)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error");
         return;
       }
@@ -35,7 +35,7 @@
     }
     function read_todo(string $id_user):array{
       if(!check_id($id_user)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error");
         return [];
       }
@@ -44,7 +44,7 @@
     }
     function remove_todo(string $id){
       if(!check_id($id)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error");
         return;
       }
@@ -64,12 +64,12 @@
     }
     function update_done_todo(string $id, string $done){
       if(!check_exist($done) || !check_id($id)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error");
         return;
       }
       if(!check_illegal_sequence($done)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error illegal sequence");
         return;
       }
@@ -83,12 +83,12 @@
     }
     function modify_todo(string $id, string $newvalue){
       if(!check_id($id) || !check_exist($newvalue)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error");
         return;
       }
       if(!check_illegal_sequence($newvalue)){
-        require_once('.\src\php\component\alert.php');
+        require_once('src\php\component\alert.php');
         echo alertJS("error illegal sequence");
         return;
       }

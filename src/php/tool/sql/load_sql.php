@@ -4,7 +4,7 @@
         $conn = new PDO("mysql:host=$servername;port=$port", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $bdd = file_get_contents('bdd.sql');
+        $bdd = file_get_contents('src\php\tool\sql\bdd.sql');
         $stmt = $conn->exec($bdd);
         echo "successfuly load the mysql database\n";
     } catch(PDOException $e) {
