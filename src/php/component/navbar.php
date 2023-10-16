@@ -1,16 +1,22 @@
 <?php
     $navbar = '';
+    require_once('src\php\tool\http_info.php');
     if(isset($_SESSION['utilisateur'])){
-        $navbar ='<nav>
-            <a href="/" alt="home">
+        $activanchor = [
+            'index' => $path=='/' ? "active_anchor" : "",
+            'todo' => $path=='/todo' ? "active_anchor" : "",
+            'agenda' => $path=='/agenda' ? "active_anchor" : "",
+        ];
+        $navbar .="<nav>
+            <a href='/' class='$activanchor[index]' alt='home'>
                 home
             </a>
-            <a href="/todo" alt="todo">
+            <a href='/todo' class='$activanchor[todo]' alt='todo'>
                 todo
             </a>
-            <a href="/agenda" alt="agenda">
+            <a href='/agenda' class='$activanchor[agenda]' alt='agenda'>
                 agenda
             </a>
-        </nav>';
+        </nav>";
     }
 ?>

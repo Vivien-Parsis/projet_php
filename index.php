@@ -6,10 +6,13 @@
    require_once('src\main.php');
    require_once('src\php\component\footer.php');
    require_once('src\php\component\navbar.php');
-   
    if(!$isnotHTML){
-      $title_header = isset($_SESSION['utilisateur']) ? $title : "";
-      echo $twig->render('template.twig', ['title' => $title,'title_header' => $title_header, 'page' => $html, 'nav' => $navbar, 'footer' => $footer]);
+      $twigContext = [
+         'title' => $title,
+         'title_header' => isset($_SESSION['utilisateur']) ? $title : "",
+         'page' => $html, 'nav' => $navbar,
+         'footer' => $footer
+      ];
+      echo $twig->render('template.twig', $twigContext);
    }
-   
 ?>
