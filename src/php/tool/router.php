@@ -1,21 +1,33 @@
 <?php
     class Router{
-        public string $path;
-        public string $http_method;
-        public string $php_file;
-        public string $title;
+        private string $path;
+        private string $http_method;
+        private string $php_file;
+        private string $title;
         function __construct(string $path, string $http_method, string $php_file, string $title){
             $this->path=$path;
             $this->http_method=$http_method;
             $this->php_file=$php_file;
             $this->title=$title;
         }
+        function getphp_file():string{
+            return $this->php_file;
+        }
+        function gettitle():string{
+            return $this->title;
+        }
+        function getpath():string{
+            return $this->path;
+        }
+        function gethttp_method():string{
+            return $this->http_method;
+        }
     }
     class RouterList{
         /**
          * array<Router>
          */
-        public array $list;
+        private array $list;
         function __construct(array $list){
             $only_with_router = true;
             foreach($list as $value){
@@ -26,36 +38,28 @@
             }
             $only_with_router ? $this->list=$list : $this->list=[];
         }
-        function get_router(string $path, string $method){
+        function get_router(string $path, string $method):router|null{
             foreach($this->list as $router){
-                if($router->path==$path && $router->http_method==$method){
+                if($router->getpath()==$path && $router->gethttp_method()==$method){
                     return $router;
                 }
             }
             return null;
         }
-        function right_method(string $path, string $method){
+        function right_method(string $path, string $method):bool{
             $check = true;
             foreach($this->list as $router){
-                if($router->path==$path && $router->http_method!=$method){
+                if($router->getpath()==$path && $router->gethttp_method()!=$method){
                     $check=false;
                     break;
                 }
             }
             return $check;
         }
-        function isnotHTML(string $path, string $method):bool{
-            foreach($this->list as $router){
-                if($router->isnotHTML==true){
-                    return true;
-                }
-            }
-            return false;
-        }
-        function right_path(string $path, string $method){
+        function right_path(string $path, string $method):bool{
             $check = false;
             foreach($this->list as $router){
-                if($router->path==$path && $router->http_method==$method){
+                if($router->getpath()==$path && $router->gethttp_method()==$method){
                     $check=true;
                     break;
                 }
@@ -114,7 +118,7 @@
         if(!$routers->right_path($path,$method)){
             return 'php/page/error_404.php';
         }
-        return $current_router->php_file;
+        return $current_router->getphp_file();
     }
     function get_title(RouterList $routers, string $path, string $method):string{
         $current_router = $routers->get_router($path,$method);
@@ -124,6 +128,6 @@
         if(!$routers->right_path($path,$method)){
             return 'error 404';
         }
-        return $current_router->title;
+        return $current_router->gettitle();
     }
 ?>

@@ -1,5 +1,10 @@
 <?php
     require('src\php\tool\sql\login.php');
+    //replace by yours mysql login
+    //$username = "";
+    //$password = "";
+    //$servername = "";
+    //$port = 3306;
     try {
         $conn = new PDO("mysql:host=$servername;port=$port", $username, $password);
         // set the PDO error mode to exception
@@ -7,7 +12,7 @@
         $bdd = file_get_contents('src\php\tool\sql\bdd.sql');
         $stmt = $conn->exec($bdd);
         echo "successfuly load the mysql database\n";
-    } catch(PDOException $e) {
+    } catch(PDOException $e){
         echo "Connection failed: " . $e->getMessage();
         return "error sql";
     }

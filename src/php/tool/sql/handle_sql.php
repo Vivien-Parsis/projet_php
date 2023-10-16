@@ -1,4 +1,10 @@
 <?php
+    //replace by yours mysql login
+    //$dbname="project_php";
+    //$username = "";
+    //$password = "";
+    //$servername = "";
+    //$port = 3306;
     function connect_sql(string $query):array|string{
         try {
             require('src\php\tool\sql\login.php');
@@ -8,14 +14,15 @@
             check_query($query);
             $stmt = $conn->prepare($query);
             $stmt->execute();
-            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            return $returndata = $stmt->fetchAll();
-        } catch(PDOException $e) {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $returndata = $stmt->fetchAll();
+            return $returndata;
+        } catch(PDOException $e){
             echo "Connection failed: " . $e->getMessage();
             return "error sql";
         }
     }
-    function check_query(string &$queryToCheck){
+    function check_query(string &$queryToCheck):void{
         //prevent from adding comment in the sql request
         $queryToCheck = str_replace("--","",$queryToCheck);
         //prevent from adding mutliple instructions in the sql request 

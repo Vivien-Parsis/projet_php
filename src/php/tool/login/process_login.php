@@ -1,7 +1,7 @@
 <?php
     require_once('src\php\component\redirect.php');
-    function process_login (){
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    function process_login(){
+        if($_SERVER["REQUEST_METHOD"] === "POST"){
             require_once('sql_login.php');
             if($_POST['function']=='login'){
                 $result = Sql_login::read_login($_POST['email'],$_POST['password']);

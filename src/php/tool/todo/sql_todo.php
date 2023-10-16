@@ -16,7 +16,7 @@
       $query="insert into todo(objectif_todo,done_todo,id_utilisateurs) value ('$objective',0,'$id_user')";
       return connect_sql($query);
     }
-    static function default_user_todo(string $id_user){
+    static function default_user_todo(string $id_user):void{
       if(!check_id($id_user)){
         require_once('src\php\component\alert.php');
         echo alertJS("error");
@@ -27,7 +27,7 @@
       (1,$id_user,'Nulla facilisi. Maecenas tristique dolor in enim porttitor laoreet. Duis venenatis tincidunt purus, sed suscipit lorem rutrum ac. Proin mauris massa, blandit sit amet porttitor fermentum, pharetra sit amet diam. Aliquam id pulvinar orci, id condimentum lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed elementum risus tellus, nec pharetra tortor feugiat id. Fusce pretium tincidunt efficitur. Praesent ut sodales neque. Duis imperdiet, risus vitae commodo fringilla, metus nibh egestas lectus, sed congue lorem enim nec ex. Duis nec porttitor diam. Donec aliquet metus eu ante cursus tempor. Nunc malesuada mi venenatis, tincidunt est suscipit, tempor nunc. Sed scelerisque erat id magna dictum, ut posuere mauris sodales. Suspendisse interdum posuere tellus, ut commodo metus sagittis ut.'),
       (0,$id_user,'Nulla facilisi. Maecenas tristique dolor in enim porttitor laoreet. Duis venenatis tincidunt purus, sed suscipit lorem rutrum ac. Proin mauris massa, blandit sit amet porttitor fermentum, pharetra sit amet diam. Aliquam id pulvinar orci, id condimentum lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed elementum risus tellus, nec pharetra tortor feugiat id. Fusce pretium tincidunt efficitur. Praesent ut sodales neque. Duis imperdiet, risus vitae commodo fringilla, metus nibh egestas lectus, sed congue lorem enim nec ex. Duis nec porttitor diam. Donec aliquet metus eu ante cursus tempor. Nunc malesuada mi venenatis, tincidunt est suscipit, tempor nunc. Sed scelerisque erat id magna dictum, ut posuere mauris sodales. Suspendisse interdum posuere tellus, ut commodo metus sagittis ut.')";
       self::remove_all_todo();
-      return connect_sql($query);
+      connect_sql($query);
     }
     static function read_all_todo():array{
       $query="select * from todo order by done_todo";
@@ -42,27 +42,27 @@
       $query="select * from todo where id_utilisateurs=$id_user order by done_todo";
       return connect_sql($query);
     }
-    static function remove_todo(string $id){
+    static function remove_todo(string $id):void{
       if(!check_id($id)){
         require_once('src\php\component\alert.php');
         echo alertJS("error");
         return;
       }
       $query="delete from todo where id_todo=$id";
-      return connect_sql($query);
+      connect_sql($query);
     }
-    static function remove_all_todo(){
+    static function remove_all_todo():void{
       $query="delete from todo";
-      return connect_sql($query);
+      connect_sql($query);
     }
-    static function remove_all_user_todo(string $id_user){
+    static function remove_all_user_todo(string $id_user):void{
       if(!check_id($id_user)){
-        return [];
+        return;
       }
       $query="delete from todo where id_utilisateurs=$id_user";
-      return connect_sql($query);
+      connect_sql($query);
     }
-    static function update_done_todo(string $id, string $done){
+    static function update_done_todo(string $id, string $done):void{
       if(!check_exist($done) || !check_id($id)){
         require_once('src\php\component\alert.php');
         echo alertJS("error");
@@ -79,9 +79,9 @@
         $done="1";
       }
       $query="update todo set done_todo=$done where id_todo=$id";
-      return connect_sql($query);
+      connect_sql($query);
     }
-    static function modify_todo(string $id, string $newvalue){
+    static function modify_todo(string $id, string $newvalue):void{
       if(!check_id($id) || !check_exist($newvalue)){
         require_once('src\php\component\alert.php');
         echo alertJS("error");
@@ -93,7 +93,7 @@
         return;
       }
       $query="update todo set objectif_todo='$newvalue' where id_todo=$id";
-      return connect_sql($query);
+      connect_sql($query);
     }
   }
 ?>
