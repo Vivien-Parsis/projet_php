@@ -3,6 +3,11 @@
     if(!isset($_SESSION['utilisateur'])){
         $html = html_login();
     }else{
-        $html = "Bienvenue ".$_SESSION["utilisateur"]["prenom"]." ".$_SESSION["utilisateur"]["nom"]." !".html_handle_login();
+        $html = html_handle_login();
+        $html .= <<<HTML
+        <span class='welcome_home'>
+            Bienvenue {$_SESSION['utilisateur']['prenom']} {$_SESSION['utilisateur']['nom']} !
+        </span>
+HTML;
     }
 ?>

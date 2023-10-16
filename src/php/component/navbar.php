@@ -7,7 +7,8 @@
             'todo' => $path=='/todo' ? "active_anchor" : "",
             'agenda' => $path=='/agenda' ? "active_anchor" : "",
         ];
-        $navbar .="<nav>
+        $navbar .=<<<HTML
+        <nav>
             <a href='/' class='$activanchor[index]' alt='home'>
                 home
             </a>
@@ -17,6 +18,7 @@
             <a href='/agenda' class='$activanchor[agenda]' alt='agenda'>
                 agenda
             </a>
-        </nav>";
+        </nav>
+HTML;
     }
 ?>

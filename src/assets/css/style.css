@@ -1,9 +1,25 @@
 *{
     font-family: 'Lexend', Arial, Helvetica, sans-serif;
+    color : var(--black);
+    --light_green : rgb(199, 240, 181);
+    --red_anchor : rgb(182, 3, 3);
+    --light_blue : rgb(209, 244, 245);
+    --grey_button : rgb(228, 224, 224);
+    --blue_focus : rgb(156, 235, 235);
+    --black : rgb(87, 87, 87);
 }
 body{
     margin:0;
     height: 100vh;
+    background-color: rgb(226, 237, 222);
+}
+header{
+    background-color: var(--light_green);
+    padding:.5em 0;
+}
+header h1{
+    text-align:center;
+    margin:0;
 }
 nav{
     width: 100%;
@@ -14,44 +30,52 @@ nav{
     align-items: center;
     flex-wrap:wrap;
     justify-content: space-evenly;
-    background-color: rgb(239, 250, 193);
-    padding:0.5em 0;
+    background-color: var(--light_green);
+    padding:.5em 0;
 }
 main{
     min-height: calc(100vh - 4.4em - 2em);
 }
 nav a{
-    padding:0.5em 0;
-    width: calc(100% / 3);
+    padding:.5em 0;
+    width: calc(100% / 3 - 2px);
     text-align: center;
     text-decoration: none;
-    color:black;
+    color:var(--black);
 }
 nav a:hover,.active_anchor{
-    color:rgb(182, 3, 3);
-    width: calc((100% / 3) - 2 * 2px);
-    border: rgb(182, 3, 3) 2px solid;
+    color:var(--red_anchor);
+    outline: var(--red_anchor) 2px solid;
 }
-h1{
-    text-align:center;
-    margin:0;
-}
+
 h2{
     text-align:center;
-    margin:0 0.2em 0.2em;
+    margin:0 .2em .2em;
 }
 footer{
     width: 100%;
-    height:1.2em;
     font-size: 1em;
     display: flex;
     flex-wrap:wrap;
     align-content: center;
     justify-content: center;
-    background-color: rgb(238, 238, 174);
+    background-color: var(--light_green);
     bottom:0px;
     position: sticky;
-    padding:0.5em 0;
+    padding:.5em 0;
+}
+input[type=submit],button{
+    cursor: pointer;
+}
+textarea,input[type=text],input[type=password],input[type=datetime-local],input[type=email],input[type=checkbox]{
+    background-color: var(--grey_button);
+    border: 2px var(--black) solid;
+}
+input[type=checkbox]{
+    accent-color: var(--blue_focus);
+}
+textarea:focus,input[type=text]:focus,input[type=password]:focus,input[type=datetime-local]:focus,input[type=email]:focus{
+    background-color: var(--blue_focus);
 }
 .error_title{
     text-align: center;
@@ -72,36 +96,37 @@ footer{
 .loading img{
     width: 1.5em;
 }
-.todo_form_add,.todo_form_modify,.todo_form_default,.agenda_form_default,.agenda_form_add{
+.todo_form_add,.todo_form_default,.agenda_form_default,.agenda_form_add{
     margin:1%;
     width: 98%;
 }
+.todo_form_modify,.agenda_form_modify{
+    margin:0 0 1em;
+    width: 98%;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.todo_content,.agenda_content{
+    width: calc(100% - 2em - 2px);
+    background-color: var(--light_blue);
+    padding:1em;
+    border: 1px var(--black) solid;
+}
 .todo_content{
-    width: calc(98%-2px);
-    background-color: rgb(238, 229, 218);
-    padding:1%;
-    border: 1px black solid;
     font-weight: bold;
 }
 .todo_content textarea,.todo_form_add textarea{
     resize: vertical;
 }
-.todo_content span{
+.todo_content span,.agenda_content span{
     width: 100%;
     text-align: justify;
     display: block;
     margin: 0 0 .5%;
 }
-.todo_content button{
-    margin: 0 0 .5%;
-}
-.todo_form_modify{
-    align-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
 .todo_form_remove,.agenda_form_remove{
-    margin: .5% 0 0;
+    margin: 0;
 }
 .todo_form_add{
     display: flex;
@@ -119,14 +144,8 @@ footer{
 }
 .checked{
     color:rgb(158, 158, 158);
-    font-weight: 100;
     font-style: italic;
-}
-.agenda_content{
-    width: calc(100% - 2% - 2px);
-    background-color: rgb(193, 245, 245);
-    padding:1%;
-    border: 1px solid black;
+    font-weight: 100;
 }
 .login_modify_form{
     margin: 1% 0 0;
@@ -151,13 +170,16 @@ footer{
     justify-content: center;
 }
 .login_content form *{
-    margin:0.5em 0; 
+    margin:.5em 0; 
+}
+.login_content a:hover{
+    color:var(--red_anchor);
 }
 .connection_content{
     display: flex;
     position: fixed;
-    right: 5vw;
-    bottom: 4vw;
+    right: calc(2 * .25em);
+    bottom: calc(1em + 2 * .5em + 2 * .25em);
     width: fit-content;
     justify-content: center;
     align-items: center;
@@ -169,17 +191,47 @@ footer{
     margin: 0;
 }
 .disconnect_form_button,.connection_content a{
-    border: 1px black solid;
-    color: black;
-    background-color: rgb(238, 238, 238);
-    border-radius: .6em;
+    margin:.25em;
+}
+.view_modify{
+    margin:1em 0;
+}
+.connection_content a, form input[type=submit], .view_modify{
+    border: 1px var(--black) solid;
+    color: var(--black);
+    background-color: var(--grey_button);
+    border-radius: .8em;
     font-size: .9em;
-    padding:.1em;
-    margin:.5em;
+    padding:.1em .35em;
     text-decoration: none;
 }
-.disconnect_form_button:hover,.connection_content a:hover{
-    border: 1px rgb(182, 3, 3) solid;
-    color:rgb(182, 3, 3);
+.connection_content a:hover, form input[type=submit]:hover, .view_modify:hover{
+    border: 1px var(--red_anchor) solid;
+    color:var(--red_anchor);
     cursor: pointer;
+}
+.form_search{
+    margin:1%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.form_search input[type=submit]{
+    display: none;
+}
+.form_search label img{
+    width: 1em;
+    padding:.2em;
+    cursor: pointer;
+    border-radius: 100%;
+    margin : 0 0 0 30%;
+    background-color:var(--black);
+}
+.welcome_home{
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-size: 1.3em;
+    margin:.4em 0 0;
 }

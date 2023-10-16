@@ -7,9 +7,9 @@
     <link rel="icon" href="/assets/img/icon.ico">
 </head>
 <body>
-    <h1>
-        {{title_header}}
-    </h1>
+    <header>
+        <h1>{{title_header|raw}}</h1>
+    </header>
     {{nav|raw}}
     <main>
         {{page|raw}}

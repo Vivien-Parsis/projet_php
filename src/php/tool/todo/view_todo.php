@@ -1,13 +1,24 @@
 <?php
     function html_todo():string{
         require_once('src\php\tool\todo\process_todo.php');
-        $html = "";
+        $search = isset($_GET['search']) ? $_GET['search']:'';
+        $html = <<<HTML
+                <form methode='GET' class='form_search'>
+                    <input type='text' placeholder='search by objectif...' name='search' value='$search'>
+                    <label for='search'><img src='/assets/img/search-alt-2-svgrepo-com.svg'></label>
+                    <input type='submit' value='recherche' id='search'>
+                </form>
+     HTML;
         $data_todo = get_todo();
         if(gettype($data_todo)=="array")
         {
             foreach($data_todo as $value){
+                if(!str_starts_with(strtolower($value['objectif_todo']),strtolower($search))){
+                    continue;
+                }
                 $checked = $value['done_todo']==0?"":"checked";
-                $html.="<div class='todo_content'>
+                $html.=<<<HTML
+                <div class='todo_content'>
                 <span class='$checked'>
                     <form action='process_todo.php' method='POST' class='todo_form_done' id='check$value[id_todo]'>
                         <input type='hidden' name='function' value='check'>
@@ -17,7 +28,7 @@
                     </form>
                     $value[objectif_todo]
                 </span>
-                <button onclick='toggleModify($value[id_todo])'>modifier</button>
+                <button class='view_modify' onclick='toggleModify($value[id_todo])'>modifier</button>
                 <form action='process_todo.php' method='POST' style='display:none' class='todo_form_modify' id='todo_form_modify$value[id_todo]'>
                     <input type='hidden' name='function' value='modify'>
                     <input type='hidden' name='id' value='$value[id_todo]'>
@@ -29,10 +40,12 @@
                     <input type='hidden' name='id' value='$value[id_todo]'>
                     <input type='submit' value='supprimer'>
                 </form>
-                </div>";
+                </div>
+     HTML;
             } 
         }   
-        $html.="<form action='process_todo.php' method='POST' class='todo_form_add'>
+        $html.= <<<HTML
+        <form action='process_todo.php' method='POST' class='todo_form_add'>
             <input type='hidden' name='function' value='add'>
             <textarea name='objectif' cols='100' rows='2' maxlength='1000' required></textarea>
             <input type='submit' value='ajouter'>
@@ -44,7 +57,8 @@
         <form action='process_todo.php' method='POST' class='todo_form_default'>
             <input type='hidden' name='function' value='default'>
             <input type='submit' value='reset'>
-        </form>";
+        </form>
+HTML;
         return $html;
     }
 ?>

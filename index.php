@@ -10,7 +10,8 @@
       $twigContext = [
          'title' => $title,
          'title_header' => isset($_SESSION['utilisateur']) ? $title : "",
-         'page' => $html, 'nav' => $navbar,
+         'page' => $html,
+         'nav' => $nav,
          'footer' => $footer
       ];
       echo $twig->render('template.twig', $twigContext);

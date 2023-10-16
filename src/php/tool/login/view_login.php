@@ -1,6 +1,7 @@
 <?php
     function html_login():string{
-        return "<h2>Se connecter</h2>
+        return <<<HTML
+        <h2>Se connecter</h2>
         <div class='login_content'>
             <form action='process_login.php' method='POST'>
                 <input type='hidden' name='function' value='login'>
@@ -11,10 +12,12 @@
                 <input type='submit' value='se connecter'>
             </form>
             <a href='/sign_in'>creer un compte</a>
-        </div>";
+        </div>
+HTML;
     }
     function html_add_login():string{
-        return "<h2>Creer un compte</h2>
+        return <<<HTML
+        <h2>Creer un compte</h2>
         <div class='login_content'>
             <form action='process_login.php' method='post'>
                 <input type='hidden' name='function' value='add'>
@@ -29,26 +32,30 @@
                 <input type='submit' value='Ajouter'>
             </form>
             <a href='/'>revenir a la page de connexion</a>
-        </div>";
+        </div>
+HTML;
     }
     function html_handle_login():string{
-        return "
+        return <<<HTML
         <div class='connection_content'>
             <form action='process_login.php' method='POST' class='disconnect_form'>
                 <input type='hidden' name='function' value='end'>
                 <input type='submit' value='se deconnecter' class='disconnect_form_button'>
             </form>
             <a href='/modify_login'>modifier son mot de passe</a>
-        </div>";
+        </div>
+HTML;
     }
     function html_modify_login():string{
-        return "<form action='process_login.php' method='POST' class='login_modify_form'>
+        return <<<HTML
+        <form action='process_login.php' method='POST' class='login_modify_form'>
             <input type='hidden' name='function' value='modify_password'>
             <label for='newpassword1'>Nouveau mot de passe</label>
             <input type='password' name='newpassword1' id='newpassword1' required>
             <label for='newpassword2'>Confirmer nouveau mot de passe</label>
             <input type='password' name='newpassword2' id='newpassword2' required>
             <input type='submit' value='modifier'>
-        </form>";
+        </form>
+HTML;
     }
 ?>
