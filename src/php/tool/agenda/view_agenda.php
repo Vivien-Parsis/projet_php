@@ -1,7 +1,7 @@
 <?php
     function html_agenda():string{
         require_once('src\php\tool\agenda\process_agenda.php');
-        $search = isset($_GET['search']) ? $_GET['search']:'';
+        $search = isset($_GET['search']) ? $_GET['search'] : '';
         $html = <<<HTML
         <form methode='GET' class='form_search'>
             <input type='text' placeholder='search by event...' name='search' value='$search'>
@@ -18,42 +18,50 @@ HTML;
                 }
                 $DateDebutString = explode(" ",$value['date_debut_agenda'])[0]; 
                 $HourDebutString = explode(" ",$value['date_debut_agenda'])[1]; 
-                $DateDebutValue = $DateDebutString."T".$HourDebutString;
                 $DateFinString = explode(" ",$value['date_fin_agenda'])[0]; 
                 $HourFinString = explode(" ",$value['date_fin_agenda'])[1]; 
-                $DateFinValue = $DateFinString."T".$HourFinString;
-                $CurrentDateDebut = [
-                    'day'=>explode("-",$DateDebutString)[2],
-                    'month'=>explode("-",$DateDebutString)[1],
-                    'year'=>explode("-",$DateDebutString)[0]];
-                $CurrentHourDebut = [
-                    'sec'=>explode(":",$HourDebutString)[2],
-                    'min'=>explode(":",$HourDebutString)[1],
-                    'hour'=>explode(":",$HourDebutString)[0]
+                $currentStart = [
+                    'date' => [
+                        'day'=>explode("-",$DateDebutString)[2],
+                        'month'=>explode("-",$DateDebutString)[1],
+                        'year'=>explode("-",$DateDebutString)[0]
+                    ],
+                    'hour' => [
+                        'sec'=>explode(":",$HourDebutString)[2],
+                        'min'=>explode(":",$HourDebutString)[1],
+                        'hour'=>explode(":",$HourDebutString)[0]
+                    ]
                 ];
-                $CurrentDateFin = [
-                    'day'=>explode("-",$DateFinString)[2],
-                    'month'=>explode("-",$DateFinString)[1],
-                    'year'=>explode("-",$DateFinString)[0]];
-                $CurrentHourFin = [
-                    'sec'=>explode(":",$HourFinString)[2],
-                    'min'=>explode(":",$HourFinString)[1],
-                    'hour'=>explode(":",$HourFinString)[0]
+                $currentEnd = [
+                    'date' => [
+                        'day'=>explode("-",$DateFinString)[2],
+                        'month'=>explode("-",$DateFinString)[1],
+                        'year'=>explode("-",$DateFinString)[0]
+                    ],
+                    'hour' => [
+                        'sec'=>explode(":",$DateFinString)[2],
+                        'min'=>explode(":",$DateFinString)[1],
+                        'hour'=>explode(":",$DateFinString)[0]
+                    ]
                 ];
                 $html.=<<<HTML
                 <div class='agenda_content'>
                 <span>
-                $CurrentDateDebut[day]/$CurrentDateDebut[month]/$CurrentDateDebut[year] - $CurrentHourDebut[hour]h$CurrentHourDebut[min]
+                {$currentStart['date']['day']}/{$currentStart['date']['month']}/{$currentStart['date']['year']}
+                -
+                {$currentStart['hour']['hour']}h{$currentStart['hour']['min']}
                 >
-                $CurrentDateFin[day]/$CurrentDateFin[month]/$CurrentDateFin[year] - $CurrentHourFin[hour]h$CurrentHourFin[min]
+                {$currentEnd['date']['day']}/{$currentEnd['date']['month']}/{$currentEnd['date']['year']}
+                -
+                {$currentEnd['hour']['hour']}h{$currentEnd['hour']['min']}
                 <br>$value[evenement_agenda] 
                 </span>
                 <button class='view_modify' onclick='toggleModify($value[id_agenda])'>modifier</button>
                 <form action='process_agenda.php' method='POST' style='display:none' class='agenda_form_modify' id='agenda_form_modify$value[id_agenda]'>
                     <input type='hidden' name='function' value='modify'>
                     <input type='hidden' name='id' value='$value[id_agenda]'>
-                    <input type='datetime-local' name='newstart' value='$DateDebutValue'>
-                    <input type='datetime-local' name='newend' value='$DateFinValue'>
+                    <input type='datetime-local' name='newstart' value='{$DateDebutString}T{$HourDebutString}'>
+                    <input type='datetime-local' name='newend' value='{$DateFinString}T{$HourFinString}'>
                     <input type='text' name='newevenement' placeholder='evenement' autocomplete='off' max-length='150' value='$value[evenement_agenda]'>
                     <input type='submit' value='modifier'>
                 </form>

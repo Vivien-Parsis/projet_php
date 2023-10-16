@@ -6,7 +6,7 @@
             <form action='process_login.php' method='POST'>
                 <input type='hidden' name='function' value='login'>
                 <label for='email'>email :</label><br>
-                <input type='email' name='email' id='email' required><br>
+                <input type='email' name='email' id='email' autocomplete='off' required><br>
                 <label for='password'>mot de passe :</label><br>
                 <input type='password' name='password' id='password' required><br>
                 <input type='submit' value='se connecter'>
