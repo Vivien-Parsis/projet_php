@@ -6,7 +6,6 @@
    require_once('src\main.php');
    require_once('src\php\component\footer.php');
    require_once('src\php\component\navbar.php');
-   require_once('src\php\tool\http_info.php');
    
    if(!$isnotHTML){
       $title_header = isset($_SESSION['utilisateur']) ? $title : "";

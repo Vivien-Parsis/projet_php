@@ -1,4 +1,4 @@
 vendor/*
+private/*
 .vscode/*
-note.txt
 src/php/tool/sql/login.php

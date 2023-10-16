@@ -1,10 +1,8 @@
 <?php
     function html_todo():string{
-        require_once('src\php\tool\todo\sql_todo.php');
-        require_once('src\php\tool\http_info.php');
-        $sql_todo = new Sql_todo();
+        require_once('src\php\tool\todo\process_todo.php');
         $html = "";
-        $data_todo = $sql_todo->read_todo($_SESSION['utilisateur']['id']);
+        $data_todo = get_todo();
         if(gettype($data_todo)=="array")
         {
             foreach($data_todo as $value){

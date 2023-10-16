@@ -1,10 +1,8 @@
 <?php
     function html_agenda():string{
-        require_once('src\php\tool\agenda\sql_agenda.php');
-        require_once('src\php\tool\http_info.php');
-        $sql_agenda = new Sql_agenda();
+        require_once('src\php\tool\agenda\process_agenda.php');
         $html = "";
-        $data_agenda = $sql_agenda->read_all_user_agenda($_SESSION['utilisateur']['id']);
+        $data_agenda = get_agenda();
         if(gettype($data_agenda)=="array")
         {
             foreach($data_agenda as $value){

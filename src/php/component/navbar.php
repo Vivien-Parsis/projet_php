@@ -1,3 +1,16 @@
 <?php
-    $navbar = isset($_SESSION['utilisateur']) ? '<nav><a href="/">home</a><a href="/todo">todo</a><a href="/agenda">agenda</a></nav>' : '';
+    $navbar = '';
+    if(isset($_SESSION['utilisateur'])){
+        $navbar ='<nav>
+            <a href="/" alt="home">
+                home
+            </a>
+            <a href="/todo" alt="todo">
+                todo
+            </a>
+            <a href="/agenda" alt="agenda">
+                agenda
+            </a>
+        </nav>';
+    }
 ?>

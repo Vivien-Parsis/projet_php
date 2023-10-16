@@ -1,5 +1,5 @@
 <?php
-    require_once('src\php\tool\sql\login.php');
+    require('src\php\tool\sql\login.php');
     try {
         $conn = new PDO("mysql:host=$servername;port=$port", $username, $password);
         // set the PDO error mode to exception

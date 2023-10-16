@@ -31,7 +31,7 @@ h2{
     margin:0 0.2em 0.2em;
 }
 nav a:hover{
-    color:red;
+    color:rgb(182, 3, 3);
 }
 footer{
     width: 100%;
@@ -121,6 +121,19 @@ footer{
     padding:1%;
     border: 1px solid black;
 }
+.login_modify_form{
+    margin: 1% 0 0;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.login_modify_form *{
+    margin: 0 0 1%; 
+}
 .login_content{
     width: 100%;
     display: flex;
@@ -133,9 +146,33 @@ footer{
 .login_content form *{
     margin:0.5em 0; 
 }
-.disconnect_form{
+.connection_content{
+    display: flex;
     position: fixed;
     right: 5vw;
-    bottom: 5vw;
+    bottom: 4vw;
     width: fit-content;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.connection_content form{
+    margin: 0;
+}
+.disconnect_form_button,.connection_content a{
+    border: 1px black solid;
+    color: black;
+    background-color: rgb(238, 238, 238);
+    border-radius: .6em;
+    font-size: .9em;
+    padding:.1em;
+    margin:.5em;
+    text-decoration: none;
+}
+.disconnect_form_button:hover,.connection_content a:hover{
+    border: 1px rgb(182, 3, 3) solid;
+    color:rgb(182, 3, 3);
+    cursor: pointer;
 }

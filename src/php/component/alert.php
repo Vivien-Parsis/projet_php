@@ -1,5 +1,5 @@
 <?php 
     function alertJS(string $message):string{
-        return "<script>alert('$message')</script>";
+        return "<script>console.log('$message');alert('$message');</script><p>$message</p>";
     }
 ?>
