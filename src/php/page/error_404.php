@@ -7,5 +7,5 @@
         <br>
         <img src='/assets/img/error-svgrepo-com.svg'>
     </h2>
- HTML;
+HTML;
 ?>

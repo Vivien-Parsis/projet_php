@@ -4,11 +4,12 @@
         $search = isset($_GET['search']) ? $_GET['search'] : '';
         $html = <<<HTML
                 <form methode='GET' class='form_search'>
-                    <input type='text' placeholder='search by objectif...' name='search' value='$search'>
+                    <input type='text' placeholder='search by objectif...' name='search' value='$search' autocomplete='off'>
                     <label for='search'><img src='/assets/img/search-alt-2-svgrepo-com.svg'></label>
                     <input type='submit' value='recherche' id='search'>
                 </form>
-     HTML;
+HTML;
+        $index = 0;
         $data_todo = get_todo();
         if(gettype($data_todo)=="array")
         {
@@ -16,9 +17,12 @@
                 if(!str_starts_with(strtolower($value['objectif_todo']),strtolower($search))){
                     continue;
                 }
-                $checked = $value['done_todo']==0?"" : "checked";
+                $index++;
+                $checked = $value['done_todo']==0 ? "" : "checked";
+                $currentClassContent = "todo_content";
+                $currentClassContent .= $checked==="checked" ? " todo_content_check": ($index%2==0 ? " todo_content_altcol" : ""); 
                 $html.=<<<HTML
-                <div class='todo_content'>
+                <div class='{$currentClassContent}'>
                 <span class='$checked'>
                     <form action='process_todo.php' method='POST' class='todo_form_done' id='check$value[id_todo]'>
                         <input type='hidden' name='function' value='check'>
@@ -41,7 +45,7 @@
                     <input type='submit' value='supprimer'>
                 </form>
                 </div>
-     HTML;
+HTML;
             } 
         }   
         $html.= <<<HTML
@@ -56,7 +60,7 @@
         </form>
         <form action='process_todo.php' method='POST' class='todo_form_default'>
             <input type='hidden' name='function' value='default'>
-            <input type='submit' value='reset'>
+            <input type='submit' value='todolist par defaut'>
         </form>
 HTML;
         return $html;

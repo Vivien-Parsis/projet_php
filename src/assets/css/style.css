@@ -4,7 +4,9 @@
     --light_green : rgb(199, 240, 181);
     --red_anchor : rgb(182, 3, 3);
     --light_blue : rgb(209, 244, 245);
+    --light_blue_alt : rgb(176, 225, 225);
     --grey_button : rgb(228, 224, 224);
+    --grey_done : rgb(188, 197, 197);
     --blue_focus : rgb(156, 235, 235);
     --black : rgb(87, 87, 87);
 }
@@ -109,9 +111,17 @@ textarea:focus,input[type=text]:focus,input[type=password]:focus,input[type=date
 }
 .todo_content,.agenda_content{
     width: calc(100% - 2em - 2px);
-    background-color: var(--light_blue);
     padding:1em;
     border: 1px var(--black) solid;
+}
+.todo_content,.agenda_content{
+    background-color: var(--light_blue);
+}
+.todo_content_check,.agenda_content_pastEvent{
+    background-color: var(--grey_done);
+}
+.todo_content_altcol,.agenda_content_altcol{
+    background-color: var(--light_blue_alt);
 }
 .todo_content{
     font-weight: bold;

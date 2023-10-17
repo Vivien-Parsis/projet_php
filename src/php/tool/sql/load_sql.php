@@ -11,7 +11,7 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $bdd = file_get_contents('src/php/tool/sql/bdd.sql');
         $stmt = $conn->exec($bdd);
-        echo "successfuly load the mysql database/n";
+        echo "successfuly load the mysql database\n";
     } catch(PDOException $e){
         echo "Connection failed: " . $e->getMessage();
         return "error sql";

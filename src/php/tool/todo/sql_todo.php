@@ -73,7 +73,7 @@
                 echo alertJS("error illegal sequence");
                 return;
             }
-            $done = $done == "1" ? "0" : "1";
+            $done = $done ==="1" ? "0" : "1";
             $query="update todo set done_todo=$done where id_todo=$id";
             connect_sql($query);
         }

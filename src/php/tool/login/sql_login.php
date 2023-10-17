@@ -13,7 +13,19 @@
                 echo alertJS("error illegal sequence");
                 return [];
             }
+            $listofmails = self::read_all_mail();
+            foreach($listofmails as $mail){
+                if($mail["mail_utilisateurs"] ===$email){
+                    require_once('src/php/component/alert.php');
+                    echo alertJS("email already use");
+                    return [];
+                }
+            }
             $query="insert into utilisateurs (mail_utilisateurs, password_utilisateurs, prenom_utilisateurs, nom_utilisateurs) value ('$email','$password','$prenom','$nom')";
+            return connect_sql($query);
+        }
+        static function read_all_mail():array{
+            $query="select mail_utilisateurs from utilisateurs";
             return connect_sql($query);
         }
         static function read_login(string $email, string $password):array{

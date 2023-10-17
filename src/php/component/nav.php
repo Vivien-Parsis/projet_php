@@ -1,5 +1,5 @@
 <?php
-    $navbar = '';
+    $nav = '';
     require_once('src/php/tool/http_info.php');
     if(isset($_SESSION['utilisateur'])){
         $activanchor = [

@@ -18,22 +18,22 @@
             $currentStartdate = explode("-",explode("T",$startDate)[0]);
             $currentEnddate = explode("-",explode("T",$endDate)[0]);
             if((count(explode("T",$startDate))!=2||count(explode("T",$endDate))!=2)||count($currentStarthour)!=2||count($currentEndhour)!=2||count($currentStartdate)!=3||count($currentEnddate)!=3){
-                    require_once('src/php/component/alert.php');
-                    echo alertJS("format de date incorect");
-                    return;
+                require_once('src/php/component/alert.php');
+                echo alertJS("format de date incorect");
+                return;
             }
             if(intval($currentStartdate[0],10)>intval($currentEnddate[0],10)
             ||(intval($currentStartdate[0],10)==intval($currentEnddate[0],10)&&intval($currentStartdate[1],10)>intval($currentEnddate[1],10))
             ||(intval($currentStartdate[0],10)==intval($currentEnddate[0],10)&&intval($currentStartdate[1],10)==intval($currentEnddate[1],10)&&intval($currentStartdate[2],10)>intval($currentEnddate[2],10))){
-                    require_once('src/php/component/alert.php');
-                    echo alertJS("erreur, date de fin anterieur a la date de début");
-                    return;
+                require_once('src/php/component/alert.php');
+                echo alertJS("erreur, date de fin anterieur a la date de début");
+                return;
             }
             if(intval($currentStarthour[0],10)>intval($currentEndhour[0],10)
             ||(intval($currentStarthour[0],10)==intval($currentEndhour[0],10)&&intval($currentStarthour[1],10)>intval($currentEndhour[1],10))){
-                    require_once('src/php/component/alert.php');
-                    echo alertJS("erreur, heure de fin anterieur a la heure de début");
-                    return;
+                require_once('src/php/component/alert.php');
+                echo alertJS("erreur, heure de fin anterieur a la heure de début");
+                return;
             }
             $StartDateTransform = explode("T",$startDate)[0]." ".explode("T",$startDate)[1].":00";
             $EndDateTransform = explode("T",$endDate)[0]." ".explode("T",$endDate)[1].":00";
