@@ -26,10 +26,10 @@
         return '';  
     }
     function get_agenda():array{
-        require_once('src\php\tool\agenda\sql_agenda.php');
+        require_once('src/php/tool/agenda/sql_agenda.php');
         return Sql_agenda::read_all_user_agenda($_SESSION['utilisateur']['id']);
     }
-    require_once('src\php\component\redirect.php');
+    require_once('src/php/component/redirect.php');
     $html = process_agenda();
     process_agenda();
 ?>

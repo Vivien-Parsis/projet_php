@@ -1,6 +1,6 @@
 <?php
     function process_todo():string{
-        require_once('src\php\component\redirect.php');
+        require_once('src/php/component/redirect.php');
         if($_SERVER["REQUEST_METHOD"] === "POST"){
             require_once('sql_todo.php');
             if($_POST["function"] === "modify"){
@@ -31,7 +31,7 @@
         return ''; 
     }
     function get_todo():array{
-        require_once('src\php\tool\todo\sql_todo.php');
+        require_once('src/php/tool/todo/sql_todo.php');
         return Sql_todo::read_todo($_SESSION['utilisateur']['id']);
     }
 $html = process_todo();

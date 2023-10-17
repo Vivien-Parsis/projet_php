@@ -1,6 +1,6 @@
 <?php
     function html_agenda():string{
-        require_once('src\php\tool\agenda\process_agenda.php');
+        require_once('src/php/tool/agenda/process_agenda.php');
         $search = isset($_GET['search']) ? $_GET['search'] : '';
         $html = <<<HTML
         <form methode='GET' class='form_search'>

@@ -1,7 +1,7 @@
 <?php
     function html_todo():string{
-        require_once('src\php\tool\todo\process_todo.php');
-        $search = isset($_GET['search']) ? $_GET['search']:'';
+        require_once('src/php/tool/todo/process_todo.php');
+        $search = isset($_GET['search']) ? $_GET['search'] : '';
         $html = <<<HTML
                 <form methode='GET' class='form_search'>
                     <input type='text' placeholder='search by objectif...' name='search' value='$search'>
@@ -16,7 +16,7 @@
                 if(!str_starts_with(strtolower($value['objectif_todo']),strtolower($search))){
                     continue;
                 }
-                $checked = $value['done_todo']==0?"":"checked";
+                $checked = $value['done_todo']==0?"" : "checked";
                 $html.=<<<HTML
                 <div class='todo_content'>
                 <span class='$checked'>

@@ -1,6 +1,6 @@
 <?php
-    require_once('src\php\tool\router.php');
-    require_once('src\php\tool\http_info.php');
+    require_once('src/php/tool/router.php');
+    require_once('src/php/tool/http_info.php');
     session_start();
     $routers = new RouterList([
         new Router('/', 'GET',"php/page/home.php",'Home'), 

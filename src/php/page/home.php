@@ -1,5 +1,5 @@
 <?php
-    require_once('src\php\tool\login\view_login.php');
+    require_once('src/php/tool/login/view_login.php');
     if(!isset($_SESSION['utilisateur'])){
         $html = html_login();
     }else{

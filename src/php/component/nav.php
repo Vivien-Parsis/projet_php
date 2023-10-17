@@ -1,6 +1,6 @@
 <?php
     $navbar = '';
-    require_once('src\php\tool\http_info.php');
+    require_once('src/php/tool/http_info.php');
     if(isset($_SESSION['utilisateur'])){
         $activanchor = [
             'index' => $path=='/' ? "active_anchor" : "",
