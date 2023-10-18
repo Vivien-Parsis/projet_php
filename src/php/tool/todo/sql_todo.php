@@ -29,10 +29,6 @@
             self::remove_all_todo();
             connect_sql($query);
         }
-        static function read_all_todo():array{
-            $query="select * from todo order by done_todo";
-            return connect_sql($query);
-        }
         static function read_todo(string $id_user):array{
             if(!check_id($id_user)){
                 require_once('src/php/component/alert.php');

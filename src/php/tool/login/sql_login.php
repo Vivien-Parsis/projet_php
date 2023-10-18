@@ -13,6 +13,11 @@
                 echo alertJS("error illegal sequence");
                 return [];
             }
+            if(!check_email($email)){
+                require_once('src/php/component/alert.php');
+                echo alertJS("invalid email");
+                return [];
+            }
             $listofmails = self::read_all_mail();
             foreach($listofmails as $mail){
                 if($mail["mail_utilisateurs"] ===$email){
@@ -37,6 +42,11 @@
             if(!check_illegal_sequence($email) || !check_illegal_sequence($password)){
                 require_once('src/php/component/alert.php');
                 echo alertJS("error illegal sequence");
+                return [];
+            }
+            if(!check_email($email)){
+                require_once('src/php/component/alert.php');
+                echo alertJS("invalid email");
                 return [];
             }
             $email = filter_var($email, FILTER_SANITIZE_EMAIL);

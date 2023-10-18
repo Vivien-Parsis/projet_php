@@ -1,7 +1,9 @@
 <?php
+   use Twig\Environment;
+   use Twig\Loader\FilesystemLoader;
    require_once('vendor/autoload.php');
-   $loader = new \Twig\Loader\FilesystemLoader('src\templates');
-   $twig = new \Twig\Environment($loader);
+   $loader = new FilesystemLoader('src\templates');
+   $twig = new Environment($loader);
    require_once('src/main.php');
    require_once('src/php/component/footer.php');
    require_once('src/php/component/nav.php');
