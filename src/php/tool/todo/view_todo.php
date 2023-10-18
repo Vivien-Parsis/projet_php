@@ -4,12 +4,16 @@
         $search = isset($_GET['search']) ? $_GET['search'] : '';
         $showDone = isset($_GET['showDone']) ? ($_GET['showDone']==='yes' ? 'checked=true' : '') : '';
         $html = <<<HTML
-        <form methode='GET' class='form_search' id='form_search'>
-            <input type='text' placeholder='search by objectif...' name='search' value='$search' autocomplete='off'>
-            <label for='search'><img src='/assets/img/search-alt-2-svgrepo-com.svg'></label>
-            <label>pas montrer ceux déjà fait ?</label>
-            <input type='checkbox' id='showDone' name='showDone' value='yes' $showDone>
-            <input type='submit' value='' id='search' style='display:none'>
+        <form methode='GET' class='form_search'>
+            <div>
+                <input type='text' placeholder='search by objectif...' name='search' value='$search' autocomplete='off'>
+                <label for='search'><img src='/assets/img/search-alt-2-svgrepo-com.svg'></label>
+            </div>
+            <div>
+                <label>pas montrer ceux déjà fait ?</label>
+                <input type='checkbox' id='showDone' name='showDone' value='yes' $showDone>
+                <input type='submit' value='' id='search' style='display:none'>
+            </div>
         </form>
 HTML;
         $index = 0;

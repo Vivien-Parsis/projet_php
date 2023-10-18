@@ -223,14 +223,22 @@ textarea:focus,input[type=text]:focus,input[type=password]:focus,input[type=date
     cursor: pointer;
 }
 .form_search{
-    margin:1%;
+    margin:0 1%;
     display: flex;
     align-content: center;
     flex-wrap: wrap;
     align-items: center;
 }
+.form_search div{
+    width: 100%;
+    margin:.3% 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}
 .form_search *{
-    margin:0 0.5%;
+    margin:0 0.35%;
 }
 .form_search input[type=submit]{
     display: none;

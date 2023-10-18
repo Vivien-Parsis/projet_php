@@ -5,11 +5,15 @@
         $showPast = isset($_GET['showPast']) ? ($_GET['showPast']==='yes' ? 'checked=true' : '') : '';
         $html = <<<HTML
         <form methode='GET' class='form_search'>
-            <input type='text' placeholder='search by event...' name='search' value='$search' autocomplete='off'>
-            <label for='search'><img src='/assets/img/search-alt-2-svgrepo-com.svg'></label>
-            <label>pas montrer ceux déjà passé ?</label>
-            <input type='checkbox' id='showPast' name='showPast' value='yes' $showPast>
-            <input type='submit' value='recherche' id='search'>
+            <div>
+                <input type='text' placeholder='search by event...' name='search' value='$search' autocomplete='off'>
+                <label for='search'><img src='/assets/img/search-alt-2-svgrepo-com.svg'></label>
+            </div>
+            <div>
+                <label>pas montrer ceux déjà passé ?</label>
+                <input type='checkbox' id='showPast' name='showPast' value='yes' $showPast>
+                <input type='submit' value='recherche' id='search'>
+            </div>
         </form>
 HTML;
         $index = 0;
