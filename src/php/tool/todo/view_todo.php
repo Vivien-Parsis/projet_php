@@ -2,11 +2,14 @@
     function html_todo():string{
         require_once('src/php/tool/todo/process_todo.php');
         $search = isset($_GET['search']) ? $_GET['search'] : '';
+        $showDone = isset($_GET['showDone']) ? ($_GET['showDone']==='yes' ? 'checked=true' : '') : '';
         $html = <<<HTML
-                <form methode='GET' class='form_search'>
+                <form methode='GET' class='form_search' id='form_search'>
                     <input type='text' placeholder='search by objectif...' name='search' value='$search' autocomplete='off'>
                     <label for='search'><img src='/assets/img/search-alt-2-svgrepo-com.svg'></label>
-                    <input type='submit' value='recherche' id='search'>
+                    <label>pas montrer ceux déjà fait ?</label>
+                    <input type='checkbox' id='showDone' name='showDone' value='yes' $showDone>
+                    <input type='submit' value='' id='search' style='display:none'>
                 </form>
 HTML;
         $index = 0;
@@ -14,11 +17,11 @@ HTML;
         if(gettype($data_todo)=="array")
         {
             foreach($data_todo as $value){
-                if(!str_starts_with(strtolower($value['objectif_todo']),strtolower($search))){
-                    continue;
-                }
                 $index++;
                 $checked = $value['done_todo']==0 ? "" : "checked";
+                if(!str_starts_with(strtolower($value['objectif_todo']),strtolower($search)) || ($showDone==='checked=true'&&$checked==="checked")){
+                    continue;
+                }
                 $currentClassContent = "todo_content";
                 $currentClassContent .= $checked==="checked" ? " todo_content_check": ($index%2==0 ? " todo_content_altcol" : ""); 
                 $html.=<<<HTML
@@ -66,5 +69,3 @@ HTML;
         return $html;
     }
 ?>
-
-<script src='assets/js/TodoModify.js'></script>

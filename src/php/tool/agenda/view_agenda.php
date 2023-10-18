@@ -2,10 +2,13 @@
     function html_agenda():string{
         require_once('src/php/tool/agenda/process_agenda.php');
         $search = isset($_GET['search']) ? $_GET['search'] : '';
+        $showPast = isset($_GET['showPast']) ? ($_GET['showPast']==='yes' ? 'checked=true' : '') : '';
         $html = <<<HTML
         <form methode='GET' class='form_search'>
             <input type='text' placeholder='search by event...' name='search' value='$search' autocomplete='off'>
             <label for='search'><img src='/assets/img/search-alt-2-svgrepo-com.svg'></label>
+            <label>pas montrer ceux déjà passé ?</label>
+                    <input type='checkbox' id='showPast' name='showPast' value='yes' $showPast>
             <input type='submit' value='recherche' id='search'>
         </form>
 HTML;
@@ -20,9 +23,6 @@ HTML;
         if(gettype($data_agenda)=="array")
         {
             foreach($data_agenda as $value){
-                if(!str_starts_with(strtolower($value['evenement_agenda']),strtolower($search)) || count(explode(" ",$value['date_debut_agenda']))!=2){
-                    continue;
-                }
                 $index++;
                 $DateDebutString = explode(" ",$value['date_debut_agenda'])[0]; 
                 $HourDebutString = explode(" ",$value['date_debut_agenda'])[1]; 
@@ -53,6 +53,9 @@ HTML;
                     ]
                 ];
                 $pastEvent = $todayDate['year']>$currentEnd['date']['year']||($todayDate['year']===$currentEnd['date']['year']&&$todayDate['month']>$currentEnd['date']['month'])||($todayDate['year']===$currentEnd['date']['year']&&$todayDate['month']===$currentEnd['date']['month']&&$todayDate['day']>$currentEnd['date']['day']);
+                if(!str_starts_with(strtolower($value['evenement_agenda']),strtolower($search)) || ($showPast==='checked=true'&&$pastEvent)){
+                    continue;
+                }
                 $currentClassContent = 'agenda_content';
                 $currentClassContent .= $pastEvent ? " agenda_content_pastEvent" : ($index%2==0 ? " agenda_content_altcol" : null); 
                 $html.=<<<HTML
@@ -105,4 +108,3 @@ HTML;
         return $html;
     }
 ?>
-<script src='assets/js/AgendaModify.js'></script>

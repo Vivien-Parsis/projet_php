@@ -227,6 +227,9 @@ textarea:focus,input[type=text]:focus,input[type=password]:focus,input[type=date
     flex-wrap: wrap;
     align-items: center;
 }
+.form_search *{
+    margin:0 0.5%;
+}
 .form_search input[type=submit]{
     display: none;
 }
@@ -235,7 +238,6 @@ textarea:focus,input[type=text]:focus,input[type=password]:focus,input[type=date
     padding:.2em;
     cursor: pointer;
     border-radius: 100%;
-    margin : 0 0 0 30%;
     background-color:var(--black);
 }
 .welcome_home{
