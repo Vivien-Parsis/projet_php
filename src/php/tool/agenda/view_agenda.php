@@ -8,7 +8,7 @@
             <input type='text' placeholder='search by event...' name='search' value='$search' autocomplete='off'>
             <label for='search'><img src='/assets/img/search-alt-2-svgrepo-com.svg'></label>
             <label>pas montrer ceux déjà passé ?</label>
-                    <input type='checkbox' id='showPast' name='showPast' value='yes' $showPast>
+            <input type='checkbox' id='showPast' name='showPast' value='yes' $showPast>
             <input type='submit' value='recherche' id='search'>
         </form>
 HTML;

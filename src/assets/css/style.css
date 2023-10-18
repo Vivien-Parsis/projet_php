@@ -143,7 +143,6 @@ textarea:focus,input[type=text]:focus,input[type=password]:focus,input[type=date
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
-    justify-content: center;
 }
 .todo_form_remove_all,.agenda_form_remove_all{
     margin:1% 1%;
@@ -196,6 +195,9 @@ textarea:focus,input[type=text]:focus,input[type=password]:focus,input[type=date
     align-content: center;
     flex-wrap: wrap;
     flex-direction: column;
+    background-color: #2525256e;
+    border-radius: 0.8em;
+    border: 1px black solid;
 }
 .connection_content form{
     margin: 0;
