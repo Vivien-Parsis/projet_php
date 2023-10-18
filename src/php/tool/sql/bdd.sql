@@ -21,7 +21,7 @@ CREATE TABLE todo (
   objectif_todo varchar(1000) NOT NULL,
   done_todo tinyint(1) NOT NULL,
   id_utilisateurs int NOT NULL,
-  FOREIGN KEY (id_utilisateurs) REFERENCES utilisateurs(id_utilisateurs) 
+  FOREIGN KEY (id_utilisateurs) REFERENCES utilisateurs(id_utilisateurs) ON DELETE CASCADE
 );
 
 INSERT INTO todo (id_todo,done_todo,id_utilisateurs,objectif_todo) VALUES
@@ -35,7 +35,7 @@ CREATE TABLE agenda (
   date_debut_agenda datetime NOT NULL,
   date_fin_agenda datetime NOT NULL,
   id_utilisateurs int NOT NULL,
-  FOREIGN KEY (id_utilisateurs) REFERENCES utilisateurs(id_utilisateurs) 
+  FOREIGN KEY (id_utilisateurs) REFERENCES utilisateurs(id_utilisateurs) ON DELETE CASCADE 
 );
 
 INSERT INTO agenda (id_agenda,id_utilisateurs,evenement_agenda,date_debut_agenda,date_fin_agenda) values 

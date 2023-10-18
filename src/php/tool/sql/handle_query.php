@@ -3,7 +3,7 @@
         if($id==null){
             return false;
         }
-        return ctype_digit($id) || gettype($id)=="int";
+        return ctype_digit($id) || gettype($id)==="int";
     }
     function check_exist(mixed $value):bool{
         if($value==null){

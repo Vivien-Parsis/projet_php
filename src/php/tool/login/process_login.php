@@ -23,6 +23,12 @@
                 session_start();
                 return redirect('/',0);
             }
+            if($_POST['function'] === 'delete'){
+                $result = Sql_login::delete_login($_SESSION['utilisateur']['id']);
+                session_destroy();
+                session_start();
+                return redirect('/',10);
+            }
             if($_POST['function'] === 'add'){
                 $result = Sql_login::add_login($_POST['email'],$_POST['password'],$_POST['nom'],$_POST['prenom']);
                 if($result=="error sql" || count($result)==0){

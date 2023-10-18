@@ -43,6 +43,10 @@ HTML;
                 <input type='submit' value='se deconnecter' class='disconnect_form_button'>
             </form>
             <a href='/modify_login'>modifier son mot de passe</a>
+            <form action='process_login.php' method='POST' class='disconnect_form'>
+                <input type='hidden' name='function' value='delete'>
+                <input type='submit' value='supprimer son compte' class='disconnect_form_button'>
+            </form>
         </div>
 HTML;
     }

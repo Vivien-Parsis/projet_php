@@ -67,5 +67,14 @@
             $query="update utilisateurs set password_utilisateurs='$newPassword' where id_utilisateurs='$id'";
             return connect_sql($query);
         }
+        static function delete_login(string $id):array|string{
+            if(!check_id($id)){
+                require_once('src/php/component/alert.php');
+                echo alertJS("error unknow id");
+                return [];
+            }
+            $query="delete from utilisateurs where id_utilisateurs='$id'";
+            return connect_sql($query);
+        }
     }
 ?>
